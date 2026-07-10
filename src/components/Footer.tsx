@@ -96,7 +96,7 @@ export default function Footer() {
             </a>
             <p className="font-sans text-xs text-luxury-ivory/40 tracking-wide leading-relaxed font-light mt-2">
               +91 99992 66369<br />
-              amritpaldutt@gmail.com
+              care@sellworth.in
             </p>
           </div>
 
