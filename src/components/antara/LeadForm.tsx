@@ -49,27 +49,45 @@ export default function LeadForm() {
   const handleTimelineChange = (timeline: string) => {
     setFormData((prev) => ({ ...prev, timeline }));
   };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Format full phone number
-    const fullData = {
-      ...formData,
-      fullPhone: `${formData.countryCode} ${formData.phone}`
+  try {
+    const leadData = {
+      name: formData.name,
+      phone: `${formData.countryCode} ${formData.phone}`,
+      email: formData.email,
+      source: "Estate 361 Landing Page",
     };
 
-    // 1. Fire tracking events
-    trackLeadSubmit(fullData);
+    const response = await fetch("/api/leads", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(leadData),
+    });
 
-    // 2. Simulate short delay for better UX instead of a backend call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      // Redirect to thank you page
-      router.push("/thank-you");
-    }, 800);
-  };
+    const result = await response.json();
+
+    if (!response.ok) {
+      console.error(result);
+      throw new Error(result.message || "Failed to submit");
+    }
+
+    // Analytics
+    trackLeadSubmit(leadData);
+
+    // Redirect
+    router.push("/thank-you");
+  } catch (error) {
+    console.error("Lead Submission Error:", error);
+    alert("Unable to submit the form. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div id="lead-form" className="bg-white p-6 md:p-8 rounded-xl shadow-2xl border-t-4 border-brand-gold w-full max-w-md mx-auto scroll-mt-24">
