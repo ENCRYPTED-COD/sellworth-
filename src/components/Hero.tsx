@@ -97,13 +97,14 @@ export default function Hero() {
           animate="visible"
           className="max-w-3xl flex flex-col space-y-8"
         >
-          {/* Tagline */}
-          <motion.div variants={itemVariants} className="flex items-center space-x-4">
-            <span className="h-[1px] w-12 bg-luxury-gold" />
-            <span className="font-mono text-xs tracking-[0.4em] text-luxury-gold uppercase">
-              Authorized Channel Partner
-            </span>
-          </motion.div>
+          {/*
+<motion.div variants={itemVariants} className="flex items-center space-x-4">
+  <span className="h-[1px] w-12 bg-luxury-gold" />
+  <span className="font-mono text-xs tracking-[0.4em] text-luxury-gold uppercase">
+    Authorized Channel Partner
+  </span>
+</motion.div>
+*/}
 
           {/* Heading */}
           <motion.h1
