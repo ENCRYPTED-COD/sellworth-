@@ -74,9 +74,9 @@ export default function BrandStory() {
               className="relative aspect-[16/9] w-full overflow-hidden"
             >
               <div
-                className="absolute inset-0 bg-cover bg-no-repeat bg-center hover:scale-105 transition-transform duration-1000"
+                className="absolute inset-0 bg-contain bg-no-repeat bg-center bg-white hover:scale-105 transition-transform duration-1000"
                 style={{
-                  backgroundImage: `url('/owner.jpg')`,
+                  backgroundImage: `url('/founder-amrit-pal.jpg')`,
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-luxury-ivory/50 via-transparent to-transparent pointer-events-none" />
