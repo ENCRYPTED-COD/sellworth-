@@ -91,7 +91,7 @@ export default function Footer() {
               className="font-sans text-xs text-luxury-ivory/40 hover:text-luxury-gold tracking-wide leading-relaxed font-light block transition-colors decoration-luxury-gold/20 hover:underline"
             >
               Sellworth<br />
-              32 Edmonton mall, The Bristol Hotel,<br />
+              149 Edmonton mall, The Bristol Hotel,<br />
               MG Road, Gurugram
             </a>
             <p className="font-sans text-xs text-luxury-ivory/40 tracking-wide leading-relaxed font-light mt-2">

@@ -100,7 +100,7 @@ export default function ContactForm() {
                     rel="noopener noreferrer" 
                     className="font-serif text-base text-luxury-ivory hover:text-luxury-gold transition-colors mt-1 block decoration-luxury-gold/30 hover:underline"
                   >
-                    32 Edmonton mall, The Bristol Hotel,<br />
+                    149 Edmonton mall, The Bristol Hotel,<br />
                     MG Road, Gurugram
                   </a>
                 </div>
