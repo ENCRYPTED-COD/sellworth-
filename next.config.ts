@@ -13,6 +13,20 @@ const nextConfig: NextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/#story',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/#contact',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
