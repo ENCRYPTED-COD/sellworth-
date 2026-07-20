@@ -72,6 +72,8 @@ export default function BrandStory() {
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="relative aspect-[16/9] w-full overflow-hidden"
+              role="img"
+              aria-label="Amrit Pal Singh, Founder of Sellworth Luxury Real Estate in Gurugram"
             >
               <div
                 className="absolute inset-0 bg-contain bg-no-repeat bg-center bg-white hover:scale-105 transition-transform duration-1000"

@@ -97,14 +97,12 @@ export default function Hero() {
           animate="visible"
           className="max-w-3xl flex flex-col space-y-8"
         >
-          {/*
-<motion.div variants={itemVariants} className="flex items-center space-x-4">
-  <span className="h-[1px] w-12 bg-luxury-gold" />
-  <span className="font-mono text-xs tracking-[0.4em] text-luxury-gold uppercase">
-    Authorized Channel Partner
-  </span>
-</motion.div>
-*/}
+          <motion.div variants={itemVariants} className="flex items-center space-x-4">
+            <span className="h-[1px] w-12 bg-luxury-gold" />
+            <h2 className="font-mono text-xs tracking-[0.4em] text-luxury-gold uppercase">
+              Premier Luxury Real Estate Consultants in Gurugram
+            </h2>
+          </motion.div>
 
           {/* Heading */}
           <motion.h1
@@ -113,6 +111,7 @@ export default function Hero() {
           >
             Curating Landmark <br className="hidden md:inline" />
             <span className="italic text-luxury-gold font-light">Addresses.</span>
+            <span className="sr-only"> Exclusive Properties & Luxury Apartments in Gurgaon</span>
           </motion.h1>
 
           {/* Subtitle */}

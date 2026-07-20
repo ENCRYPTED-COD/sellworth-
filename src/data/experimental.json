@@ -1,0 +1,338 @@
+[
+  {
+    "id": "p2",
+    "category": "plots",
+    "name": "DLF Phase 2",
+    "area": "500 Sq yards",
+    "price": "10 Cr"
+  },
+  {
+    "id": "p3",
+    "category": "plots",
+    "name": "Sushant Lok 1",
+    "area": "250 Sq yards",
+    "price": "8 Cr"
+  },
+  {
+    "id": "p4",
+    "category": "plots",
+    "name": "Golf Course Extension",
+    "area": "1000 Sq yards",
+    "price": "35 Cr"
+  },
+  {
+    "id": "a1",
+    "category": "apartments",
+    "name": "DLF Magnolias",
+    "area": "6,500 Sq ft",
+    "price": "32 Cr"
+  },
+  {
+    "id": "a2",
+    "category": "apartments",
+    "name": "DLF Camellias",
+    "area": "7,400 Sq ft",
+    "price": "45 Cr"
+  },
+  {
+    "id": "a3",
+    "category": "apartments",
+    "name": "M3M Golfestate",
+    "area": "3,500 Sq ft",
+    "price": "10 Cr"
+  },
+  {
+    "id": "a4",
+    "category": "apartments",
+    "name": "Central Park Resorts",
+    "area": "2,800 Sq ft",
+    "price": "6.5 Cr"
+  },
+  {
+    "id": "bf1",
+    "category": "builder-floors",
+    "name": "DLF Phase 4 Independent Floor",
+    "area": "400 Sq yards (Floor)",
+    "price": "4.5 Cr"
+  },
+  {
+    "id": "bf2",
+    "category": "builder-floors",
+    "name": "South City 1",
+    "area": "350 Sq yards (Floor)",
+    "price": "3.8 Cr"
+  },
+  {
+    "id": "bf3",
+    "category": "builder-floors",
+    "name": "Nirvana Country Floor",
+    "area": "500 Sq yards (Floor)",
+    "price": "5.5 Cr"
+  },
+  {
+    "id": "c1",
+    "category": "commercial",
+    "name": "Cyber Hub Retail Space",
+    "area": "1,200 Sq ft",
+    "price": "15 Cr"
+  },
+  {
+    "id": "c2",
+    "category": "commercial",
+    "name": "Golf Course Road Office",
+    "area": "2,500 Sq ft",
+    "price": "9 Cr"
+  },
+  {
+    "id": "l1",
+    "category": "leasing",
+    "name": "DLF Crest (For Rent)",
+    "area": "3,100 Sq ft",
+    "price": "3.5 Lacs / month"
+  },
+  {
+    "id": "l2",
+    "category": "leasing",
+    "name": "Horizon Center Office (Lease)",
+    "area": "5,000 Sq ft",
+    "price": "8 Lacs / month"
+  },
+  {
+    "name": "dlf",
+    "category": "plots",
+    "area": "520",
+    "price": "56cr",
+    "id": "ext_1784193076490"
+  },
+  {
+    "name": "as",
+    "category": "plots",
+    "area": "23",
+    "price": "45",
+    "id": "ext_1784196120234"
+  },
+  {
+    "id": "ext_img1_1",
+    "category": "plots",
+    "name": "BPTP Amstoria",
+    "area": "264 Sq Yards",
+    "price": "7.92 Cr onwards"
+  },
+  {
+    "id": "ext_img1_2",
+    "category": "apartments",
+    "name": "Amstoria Villa",
+    "area": "5641 Sq Yards",
+    "price": "11.20 Cr"
+  },
+  {
+    "id": "ext_img1_3",
+    "category": "plots",
+    "name": "Astaire",
+    "area": "289.7 Sq Yards",
+    "price": "8.69 Cr"
+  },
+  {
+    "id": "ext_img1_4",
+    "category": "commercial",
+    "name": "Primary School Land",
+    "area": "2420.00 Sq Yards",
+    "price": "25.41 Cr"
+  },
+  {
+    "id": "ext_img1_5",
+    "category": "commercial",
+    "name": "Creche School",
+    "area": "968.00 Sq Yards",
+    "price": "10.25 Cr"
+  },
+  {
+    "id": "ext_img2_1",
+    "category": "builder-floors",
+    "name": "Astaire Garden Floors",
+    "area": "1847 Sq ft",
+    "price": "2.59 Cr"
+  },
+  {
+    "id": "ext_img3_1",
+    "category": "plots",
+    "name": "Golf Course Extension (North)",
+    "area": "265.1 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img3_2",
+    "category": "plots",
+    "name": "Golf Course Extension (North)",
+    "area": "220.65 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img3_3",
+    "category": "plots",
+    "name": "Golf Course Extension (South)",
+    "area": "219.07 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img3_4",
+    "category": "plots",
+    "name": "Golf Course Extension (West)",
+    "area": "434.86 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img3_5",
+    "category": "plots",
+    "name": "Golf Course Extension (East)",
+    "area": "435.23 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img4_1",
+    "category": "plots",
+    "name": "Golf Course Ext. (North Facing, 2 side open)",
+    "area": "252 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img4_2",
+    "category": "plots",
+    "name": "Golf Course Ext. (West Facing, 2 side open)",
+    "area": "151 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img4_3",
+    "category": "plots",
+    "name": "Golf Course Ext. (West Facing)",
+    "area": "446 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img5_1",
+    "category": "plots",
+    "name": "Sector 40 Plot (Corner 2 side open)",
+    "area": "263 Sq Yards",
+    "price": "10 Cr"
+  },
+  {
+    "id": "ext_img5_2",
+    "category": "plots",
+    "name": "DLF Phase 1 Plot",
+    "area": "476 Sq Yards",
+    "price": "18.5 Cr"
+  },
+  {
+    "id": "ext_img5_3",
+    "category": "plots",
+    "name": "Sushant Lok 1 Plot (North Facing)",
+    "area": "300 Sq Yards",
+    "price": "12.5 Cr"
+  },
+  {
+    "id": "ext_img5_4",
+    "category": "plots",
+    "name": "DLF Phase 4 Plot (East Facing)",
+    "area": "360 Sq Yards",
+    "price": "13 Cr"
+  },
+  {
+    "id": "ext_img5_5",
+    "category": "plots",
+    "name": "DLF Phase 1 Plot (12m road)",
+    "area": "502 Sq Yards",
+    "price": "22.50 Cr"
+  },
+  {
+    "id": "ext_img5_6",
+    "category": "plots",
+    "name": "DLF Phase 2 Plot (Corner Gated lane)",
+    "area": "502 Sq Yards",
+    "price": "5.50 Lac / yd"
+  },
+  {
+    "id": "ext_img5_7",
+    "category": "plots",
+    "name": "Sector 46 Plot",
+    "area": "500 Sq Yards",
+    "price": "18 Cr"
+  },
+  {
+    "id": "ext_img5_8",
+    "category": "plots",
+    "name": "DLF Phase 4 Plot (Backside green belt)",
+    "area": "345 Sq Yards",
+    "price": "Price on Request"
+  },
+  {
+    "id": "ext_img5_9",
+    "category": "plots",
+    "name": "DLF Phase 1 Plot (T point South facing)",
+    "area": "647 Sq Yards",
+    "price": "4 Lac / yd"
+  },
+  {
+    "id": "ext_img5_10",
+    "category": "plots",
+    "name": "Sushant Lok Phase 1 Plot (Stilt + 4)",
+    "area": "215 Sq Yards",
+    "price": "11 Cr"
+  },
+  {
+    "id": "ext_img5_11",
+    "category": "plots",
+    "name": "DLF Phase 1 Built-up House (Park facing)",
+    "area": "316 Sq Yards",
+    "price": "14 Cr"
+  },
+  {
+    "id": "ext_img5_12",
+    "category": "plots",
+    "name": "Sushant Lok Phase 1 Plot (Park facing)",
+    "area": "215 Sq Yards",
+    "price": "9.25 Cr"
+  },
+  {
+    "id": "ext_img5_13",
+    "category": "plots",
+    "name": "DLF Phase 1 Plot",
+    "area": "360 Sq Yards",
+    "price": "9 Lac / yd"
+  },
+  {
+    "id": "ext_img5_14",
+    "category": "plots",
+    "name": "DLF Phase 2 Plot",
+    "area": "300 Sq Yards",
+    "price": "14 Cr"
+  },
+  {
+    "id": "ext_img5_15",
+    "category": "plots",
+    "name": "DLF Phase 4 Plot",
+    "area": "360 Sq Yards",
+    "price": "14 Cr"
+  },
+  {
+    "id": "ext_img5_16",
+    "category": "plots",
+    "name": "South City 2 Plot (East Facing Vacant)",
+    "area": "500 Sq Yards",
+    "price": "2.75 Lac / yd"
+  },
+  {
+    "id": "ext_img5_17",
+    "category": "plots",
+    "name": "South City 2 Plot (East Facing Vacant)",
+    "area": "500 Sq Yards",
+    "price": "2.75 Lac / yd"
+  },
+  {
+    "id": "ext_img5_18",
+    "category": "plots",
+    "name": "South City 2 Plot (Corner 2 side open)",
+    "area": "1365 Sq Yards",
+    "price": "2.75 Lac / yd"
+  }
+]

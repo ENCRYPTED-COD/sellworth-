@@ -115,6 +115,11 @@ export default function Footer() {
           <div className="h-[1px] bg-luxury-gold/30 w-1/4" />
         </div>
 
+        {/* SEO Keywords Block (Subtle text for search engines) */}
+        <div className="mb-8 font-sans text-[9px] text-luxury-ivory/20 tracking-wider leading-relaxed text-justify">
+          Sellworth is Gurugram's premier real estate consultancy, specializing in ultra-luxury apartments, bespoke villas, builder floors, and premium commercial leasing. We curate exclusive property listings across top locations including DLF Phase 1, Phase 2, Phase 4, Phase 5, Golf Course Road, Golf Course Extension, Cyber City, Sushant Lok, and South City. Our portfolio includes landmark developments such as DLF Camellias, Magnolias, Aralias, M3M Golfestate, and prime plots. Whether you are looking to buy a villa in Gurugram, invest in commercial real estate, or find ready-to-move-in luxury penthouses, our expert advisors provide unparalleled market diligence and private wealth asset management.
+        </div>
+
         {/* Disclaimer */}
         <div className="mb-12 font-sans text-[10px] text-luxury-ivory/40 tracking-wide leading-relaxed font-light text-justify">
           Disclaimer: Sellworth is only an intermediary offering its platform to advertise properties of Seller for a Customer/Buyer/User coming on its Website and is not and cannot be a party to or privy to or control in any manner any transactions between the Seller and the Customer/Buyer/User. All the offers and discounts on this Website have been extended by various Builder(s)/Developer(s) who have advertised their products. Sellworth is only communicating the offers and not selling or rendering any of those products or services. It neither warrants nor is it making any representations with respect to offer(s) made on the site. Sellworth shall neither be responsible nor liable to mediate or resolve any disputes or disagreements between the Customer/Buyer/User and the Seller and both Seller and Customer/Buyer/User shall settle all such disputes without involving Sellworth in any manner. All trademarks, logos and names are properties of their respective Builder(s)/Developer(s).
@@ -123,7 +128,7 @@ export default function Footer() {
         {/* Legal Disclaimer & Copyright Footer */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-[10px] font-mono tracking-wider text-luxury-ivory/30">
           <div>
-            &copy; {new Date().getFullYear()} SELLWORTH. All Rights Reserved. &bull; RERA Registration: RC/HARERA/GGM/2026/01.
+            &copy; {new Date().getFullYear()} <Link href="/admin" className="cursor-default hover:text-luxury-ivory/40 transition-colors">SELLWORTH</Link>. All Rights Reserved. &bull; RERA Registration: RC/HARERA/GGM/2026/01.
           </div>
           <div className="flex space-x-6">
             <Link href="/#contact" className="hover:text-luxury-gold">Privacy Policy</Link>

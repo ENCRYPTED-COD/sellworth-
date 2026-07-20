@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { properties } from "../data/properties";
+import ReadyToMoveFramework from "./ReadyToMoveFramework";
 import { ArrowUpRight, Search, X } from "lucide-react";
 
 export default function Collections() {
-  const [activeTab, setActiveTab] = useState<"residences" | "golf" | "commercial" | "new-launch">("residences");
+  const [activeTab, setActiveTab] = useState<"residences" | "golf" | "commercial" | "new-launch" | "ready-to-move">("residences");
   const [budgetFilter, setBudgetFilter] = useState<"all" | "under-10" | "10-30" | "above-30">("all");
   const [locationFilter, setLocationFilter] = useState<"all" | "golf-course-road" | "cyber-city" | "dwarka-expressway" | "spr-road" | "new-gurgaon">("all");
 
@@ -15,7 +16,8 @@ export default function Collections() {
     { id: "residences", label: "Signature Residences" },
     { id: "golf", label: "Golf Estate Living" },
     { id: "commercial", label: "Commercial Landmarks" },
-    { id: "new-launch", label: "New Launch Collections" }
+    { id: "new-launch", label: "New Launch Collections" },
+    { id: "ready-to-move", label: "Ready to Move In" }
   ] as const;
 
   const filteredProperties = properties.filter((p) => {
@@ -54,6 +56,9 @@ export default function Collections() {
       } else if (hash === "#new-launch") {
         setActiveTab("new-launch");
         resetFilters();
+      } else if (hash === "#ready-to-move") {
+        setActiveTab("ready-to-move");
+        resetFilters();
       }
     };
     
@@ -62,7 +67,7 @@ export default function Collections() {
 
     const handleSwitchTab = (e: any) => {
       const tab = e.detail;
-      if (tab === "commercial" || tab === "residences" || tab === "new-launch") {
+      if (tab === "commercial" || tab === "residences" || tab === "new-launch" || tab === "ready-to-move") {
         setActiveTab(tab);
         resetFilters();
       }
@@ -81,6 +86,7 @@ export default function Collections() {
       <div id="residences" className="absolute top-0" />
       <div id="commercial" className="absolute top-0" />
       <div id="new-launch" className="absolute top-0" />
+      <div id="ready-to-move" className="absolute top-0" />
 
       {/* Subtle layout grid in black */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.01)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none" />
@@ -130,6 +136,26 @@ export default function Collections() {
           </div>
         </div>
 
+        {activeTab === "ready-to-move" ? (
+          <motion.div
+            key="ready-to-move-view"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="mt-8"
+          >
+            <ReadyToMoveFramework />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="standard-collections"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="space-y-12"
+          >
+        
         {/* Advanced Filters Panel */}
         <div className="flex flex-wrap gap-6 items-center bg-luxury-charcoal/20 border border-luxury-ivory/5 p-6 md:p-8 mb-16">
           {/* Budget Filter */}
@@ -276,6 +302,8 @@ export default function Collections() {
             <ArrowUpRight className="w-4 h-4 text-luxury-gold transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </Link>
         </div>
+        </motion.div>
+        )}
 
       </div>
     </section>

@@ -112,11 +112,11 @@ export default function Locations() {
                 className="text-left py-4 focus:outline-none group relative transition-colors duration-300"
               >
                 <div className="flex flex-col space-y-1">
-                  <span className={`font-serif text-2xl md:text-3xl tracking-wide transition-colors ${
-                    activeLoc.id === loc.id ? "text-luxury-gold" : "text-luxury-ivory/40 group-hover:text-luxury-ivory"
+                  <h3 className={`block font-serif text-2xl transition-colors ${
+                    activeLoc.id === loc.id ? "text-luxury-ivory" : "text-luxury-ivory/40 group-hover:text-luxury-ivory/80"
                   }`}>
                     {loc.name}
-                  </span>
+                  </h3>
                   <span className={`font-mono text-[9px] tracking-widest uppercase transition-colors ${
                     activeLoc.id === loc.id ? "text-luxury-gold/70" : "text-luxury-ivory/20 group-hover:text-luxury-gold/40"
                   }`}>

@@ -19,6 +19,43 @@ export interface Property {
 
 export const properties: Property[] = [
   {
+    slug: "puri-the-aravallis-sector-61",
+    name: "PURI THE ARAVALLIS",
+    developer: "Puri Construction Pvt.Ltd",
+    location: "Sector 61, Gurugram",
+    investmentRange: "Price on Request",
+    category: "new-launch",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=80"
+    ],
+    description: "PURI THE ARAVALLIS in Sector 61, Gurugram is a highly anticipated residential project by Puri Construction Pvt.Ltd. The development is well underway with swift construction progress and will offer luxurious 3BHK & 4BHK apartments with premium finishes, grand podium levels, and state-of-the-art infrastructure.",
+    overview: [
+      { key: "Configurations", value: "3 & 4 BHK Apartments" },
+      { key: "Status", value: "Under Construction" },
+      { key: "Contractor", value: "Ahluwalia Contracts(I) Ltd" },
+      { key: "Developer", value: "Puri Construction Pvt.Ltd" }
+    ],
+    amenities: [
+      "Grand Podium Level",
+      "Terrace Amenities",
+      "Premium Marble & Tile Flooring",
+      "State-of-the-art STP & WTP"
+    ],
+    highlights: [
+      "External UPVC Work Included",
+      "Fast-paced Construction by Ahluwalia Contracts",
+      "Tower A, B & C Progressing Rapidly"
+    ],
+    advantages: [
+      "Located in the premium Sector 61, Gurugram",
+      "Excellent connectivity and surroundings",
+      "Dedicated EWS and Non-Tower Areas"
+    ],
+    priceNumeric: 0
+  },
+  {
     slug: "the-trillion-sector-48",
     name: "THE TRILLION",
     developer: "Experion",

@@ -16,8 +16,15 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Sellworth | Curating Landmark Addresses",
-  description: "Gurgaon's premier real estate advisory for distinguished residential and commercial developments from ₹2Cr to ₹100Cr.",
+  title: "Sellworth | Luxury Real Estate & Premium Properties in Gurugram",
+  description: "Discover exclusive luxury apartments, bespoke villas, and premium commercial spaces in Gurugram's top locations like DLF Phase 5, Golf Course Road, and Cyber City.",
+  keywords: ["Luxury Real Estate Gurugram", "Premium Properties Gurgaon", "DLF Camellias", "DLF Magnolias", "Golf Course Road Apartments", "Buy Villa Gurugram", "Commercial Leasing Cyber City"],
+  openGraph: {
+    title: "Sellworth | Luxury Real Estate Gurugram",
+    description: "Gurgaon's premier real estate advisory for distinguished residential and commercial developments.",
+    type: "website",
+    locale: "en_IN",
+  }
 };
 
 export default function RootLayout({
@@ -37,4 +44,3 @@ export default function RootLayout({
     </html>
   );
 }
-
