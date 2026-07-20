@@ -334,5 +334,12 @@
     "name": "South City 2 Plot (Corner 2 side open)",
     "area": "1365 Sq Yards",
     "price": "2.75 Lac / yd"
+  },
+  {
+    "id": "ext_img5_19",
+    "category": "penthouses",
+    "name": "Ireo Skyon (Sector 60)",
+    "area": "4900 Sq ft",
+    "price": "9.7 Cr"
   }
 ]

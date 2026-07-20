@@ -6,7 +6,7 @@ import { Search } from "lucide-react";
 import { ResaleProperty } from "../data/resale";
 
 export default function ReadyToMoveFramework() {
-  const [activeCategory, setActiveCategory] = useState<"plots" | "apartments" | "builder-floors" | "commercial" | "leasing">("plots");
+  const [activeCategory, setActiveCategory] = useState<"plots" | "apartments" | "builder-floors" | "commercial" | "leasing" | "penthouses">("plots");
   const [searchQuery, setSearchQuery] = useState("");
   const [properties, setProperties] = useState<ResaleProperty[]>([]);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,7 @@ export default function ReadyToMoveFramework() {
     { id: "plots", label: "Plots" },
     { id: "apartments", label: "Apartments" },
     { id: "builder-floors", label: "Builder Floors" },
+    { id: "penthouses", label: "Penthouses" },
     { id: "commercial", label: "Commercial" },
     { id: "leasing", label: "Leasing" },
   ] as const;
