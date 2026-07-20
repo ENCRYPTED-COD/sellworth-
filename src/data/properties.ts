@@ -25,10 +25,13 @@ export const properties: Property[] = [
     location: "Sector 61, Gurugram",
     investmentRange: "Price on Request",
     category: "new-launch",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80",
+    image: "/puri-aravallis-1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=80"
+      "/puri-aravallis-1.jpg",
+      "/puri-aravallis-2.png",
+      "/puri-aravallis-3.png",
+      "/puri-aravallis-4.png",
+      "/puri-aravallis-5.png"
     ],
     description: "PURI THE ARAVALLIS in Sector 61, Gurugram is a highly anticipated residential project by Puri Construction Pvt.Ltd. The development is well underway with swift construction progress and will offer luxurious 3BHK & 4BHK apartments with premium finishes, grand podium levels, and state-of-the-art infrastructure.",
     overview: [
@@ -54,47 +57,6 @@ export const properties: Property[] = [
       "Dedicated EWS and Non-Tower Areas"
     ],
     priceNumeric: 0
-  },
-  {
-    slug: "the-trillion-sector-48",
-    name: "THE TRILLION",
-    developer: "Experion",
-    location: "Sector 48, Gurugram",
-    investmentRange: "Price on Request",
-    category: "new-launch",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=80",
-      "https://images.unsplash.com/photo-1600566753086-00f18efc2291?auto=format&fit=crop&w=1000&q=80"
-    ],
-    description: "THE TRILLION by Experion offers ultra-luxury 3 & 4 BHK homes in the highly sought-after Sector 48, Gurugram. Designed for those who seek the extraordinary, #TheTrillionLife encompasses everything you seek in a premium legacy lifestyle.",
-    overview: [
-      { key: "Configurations", value: "3 & 4 BHK Luxury Homes" },
-      { key: "Status", value: "New Launch" },
-      { key: "RERA Registration", value: "RC/REP/HARERA/GGM/911/643/2025/14" },
-      { key: "Developer", value: "Experion (A Singapore Group Company)" }
-    ],
-    amenities: [
-      "Signature Clubhouse & Lounge",
-      "Resort-style Swimming Pool",
-      "24/7 Premium Concierge",
-      "Biophilic Landscaped Gardens",
-      "State-of-the-art Fitness Studio"
-    ],
-    highlights: [
-      "#TheTrillionLife - It's Everything You Seek",
-      "FDI Real Estate Developer (Singapore Group Company)",
-      "Iconic architecture with triple high-rise towers",
-      "Expansive 3 & 4 BHK layouts with panoramic views"
-    ],
-    advantages: [
-      "Strategically located in Sector 48, Gurugram",
-      "Seamless connectivity to NH-48 and prime business hubs",
-      "Immediate proximity to top-tier international schools and hospitals",
-      "Developed by Experion, a 100% FDI funded premium developer"
-    ],
-    priceNumeric: 5.0
   },
   {
     slug: "belaperla-sector-48",
