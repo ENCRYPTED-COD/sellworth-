@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search } from "lucide-react";
+import { Search, MessageCircle, Edit2, Trash2, Check, X } from "lucide-react";
 import { ResaleProperty } from "../data/resale";
 
 export default function ReadyToMoveFramework() {
@@ -11,7 +11,11 @@ export default function ReadyToMoveFramework() {
   const [properties, setProperties] = useState<ResaleProperty[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const [loading, setLoading] = useState(true);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editFormData, setEditFormData] = useState<Partial<ResaleProperty>>({});
+
+  const fetchProperties = () => {
     fetch("/api/properties")
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +26,47 @@ export default function ReadyToMoveFramework() {
         console.error("Failed to load properties", err);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchProperties();
   }, []);
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this property?")) return;
+    try {
+      const res = await fetch(`/api/properties?id=${id}`, { method: "DELETE" });
+      if (res.ok) fetchProperties();
+    } catch (err) {
+      console.error("Failed to delete", err);
+    }
+  };
+
+  const startEdit = (prop: ResaleProperty) => {
+    setEditingId(prop.id);
+    setEditFormData(prop);
+  };
+
+  const handleUpdate = async () => {
+    try {
+      const res = await fetch("/api/properties", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editFormData),
+      });
+      if (res.ok) {
+        setEditingId(null);
+        fetchProperties();
+      }
+    } catch (err) {
+      console.error("Failed to update", err);
+    }
+  };
+
+  const getWhatsAppLink = (prop: ResaleProperty) => {
+    const text = encodeURIComponent(`Hi, I'm interested in ${prop.name} (${prop.area} - ${prop.price}). Can you provide more details?`);
+    return `https://wa.me/919999999999?text=${text}`; // Replace with actual number
+  };
 
   const categories = [
     { id: "plots", label: "Plots" },
@@ -118,29 +162,88 @@ export default function ReadyToMoveFramework() {
                   <motion.div 
                     layout
                     key={prop.id}
-                    className="group border border-luxury-ivory/10 bg-luxury-charcoal/20 hover:bg-luxury-charcoal/60 hover:border-luxury-gold/30 p-4 md:p-5 flex flex-col md:flex-row md:items-center justify-between transition-all duration-300 cursor-pointer gap-4 md:gap-8"
+                    className="group border border-luxury-ivory/10 bg-luxury-charcoal/20 hover:bg-luxury-charcoal/60 hover:border-luxury-gold/30 p-4 md:p-5 flex flex-col md:flex-row md:items-center justify-between transition-all duration-300 gap-4 md:gap-8"
                   >
-                    {/* Left: Name & Category */}
-                    <div className="flex flex-col md:flex-row md:items-center gap-3 w-full md:w-5/12">
-                      <h4 className="font-serif text-base md:text-lg text-luxury-ivory group-hover:text-luxury-gold transition-colors leading-snug">
-                        {prop.name}
-                      </h4>
-                      <span className="px-2 py-1 bg-luxury-ivory/5 text-luxury-ivory/60 font-mono text-[9px] uppercase tracking-wider whitespace-nowrap self-start md:self-center">
-                        {categories.find(c => c.id === prop.category)?.label}
-                      </span>
-                    </div>
-                    
-                    {/* Right: Area & Price */}
-                    <div className="flex flex-row items-center justify-between md:justify-end gap-6 md:gap-12 w-full md:w-7/12">
-                      <div className="flex flex-col text-left md:text-right">
-                        <span className="font-sans text-[9px] uppercase tracking-widest text-luxury-ivory/40 mb-1">Area</span>
-                        <span className="font-sans text-sm text-luxury-ivory font-light">{prop.area}</span>
+                    {editingId === prop.id ? (
+                      <div className="flex flex-col md:flex-row gap-4 w-full items-center">
+                        <input
+                          type="text"
+                          value={editFormData.name || ""}
+                          onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
+                          className="bg-luxury-black border border-luxury-ivory/20 px-3 py-2 text-sm text-luxury-ivory focus:outline-none focus:border-luxury-gold flex-1"
+                          placeholder="Name"
+                        />
+                        <input
+                          type="text"
+                          value={editFormData.area || ""}
+                          onChange={(e) => setEditFormData({ ...editFormData, area: e.target.value })}
+                          className="bg-luxury-black border border-luxury-ivory/20 px-3 py-2 text-sm text-luxury-ivory focus:outline-none focus:border-luxury-gold w-32"
+                          placeholder="Area"
+                        />
+                        <input
+                          type="text"
+                          value={editFormData.price || ""}
+                          onChange={(e) => setEditFormData({ ...editFormData, price: e.target.value })}
+                          className="bg-luxury-black border border-luxury-ivory/20 px-3 py-2 text-sm text-luxury-ivory focus:outline-none focus:border-luxury-gold w-32"
+                          placeholder="Price"
+                        />
+                        <div className="flex gap-2">
+                          <button onClick={handleUpdate} className="p-2 bg-green-500/20 text-green-400 hover:bg-green-500/40 rounded transition-colors"><Check className="w-4 h-4" /></button>
+                          <button onClick={() => setEditingId(null)} className="p-2 bg-red-500/20 text-red-400 hover:bg-red-500/40 rounded transition-colors"><X className="w-4 h-4" /></button>
+                        </div>
                       </div>
-                      <div className="flex flex-col text-right min-w-[120px]">
-                        <span className="font-sans text-[9px] uppercase tracking-widest text-luxury-ivory/40 mb-1">Asking Price</span>
-                        <span className="font-serif text-lg text-luxury-gold whitespace-nowrap">{prop.price}</span>
-                      </div>
-                    </div>
+                    ) : (
+                      <>
+                        {/* Left: Name & Category */}
+                        <div className="flex flex-col md:flex-row md:items-center gap-3 w-full md:w-4/12">
+                          <h4 className="font-serif text-base md:text-lg text-luxury-ivory group-hover:text-luxury-gold transition-colors leading-snug">
+                            {prop.name}
+                          </h4>
+                          <span className="px-2 py-1 bg-luxury-ivory/5 text-luxury-ivory/60 font-mono text-[9px] uppercase tracking-wider whitespace-nowrap self-start md:self-center">
+                            {categories.find(c => c.id === prop.category)?.label}
+                          </span>
+                        </div>
+                        
+                        {/* Right: Area & Price */}
+                        <div className="flex flex-row items-center justify-between md:justify-end gap-6 md:gap-8 w-full md:w-5/12">
+                          <div className="flex flex-col text-left md:text-right">
+                            <span className="font-sans text-[9px] uppercase tracking-widest text-luxury-ivory/40 mb-1">Area</span>
+                            <span className="font-sans text-sm text-luxury-ivory font-light">{prop.area}</span>
+                          </div>
+                          <div className="flex flex-col text-right min-w-[120px]">
+                            <span className="font-sans text-[9px] uppercase tracking-widest text-luxury-ivory/40 mb-1">Asking Price</span>
+                            <span className="font-serif text-lg text-luxury-gold whitespace-nowrap">{prop.price}</span>
+                          </div>
+                        </div>
+
+                        {/* Actions: WhatsApp, Edit, Delete */}
+                        <div className="flex flex-row items-center justify-end gap-2 w-full md:w-3/12 mt-4 md:mt-0">
+                          <a 
+                            href={getWhatsAppLink(prop)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center p-2.5 bg-green-500/10 text-green-400 border border-green-500/20 hover:bg-green-500 hover:text-white transition-all rounded-full"
+                            title="Inquire on WhatsApp"
+                          >
+                            <MessageCircle className="w-4 h-4" />
+                          </a>
+                          <button 
+                            onClick={() => startEdit(prop)}
+                            className="flex items-center justify-center p-2.5 bg-luxury-ivory/5 text-luxury-ivory/60 border border-luxury-ivory/10 hover:bg-luxury-gold hover:text-black hover:border-luxury-gold transition-all rounded-full"
+                            title="Edit Listing"
+                          >
+                            <Edit2 className="w-4 h-4" />
+                          </button>
+                          <button 
+                            onClick={() => handleDelete(prop.id)}
+                            className="flex items-center justify-center p-2.5 bg-red-500/5 text-red-400 border border-red-500/10 hover:bg-red-500 hover:text-white transition-all rounded-full"
+                            title="Delete Listing"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </motion.div>
                 ))}
               </motion.div>
