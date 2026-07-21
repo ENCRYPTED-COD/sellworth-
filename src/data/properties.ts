@@ -4,7 +4,7 @@ export interface Property {
   developer: string;
   location: string;
   investmentRange: string;
-  category: "residences" | "golf" | "commercial" | "new-launch";
+  category: "residences" | "golf" | "commercial" | "new-launch" | "ready-to-move";
   image: string;
   images: string[];
   description: string;
@@ -238,7 +238,7 @@ export const properties: Property[] = [
     developer: "Ireo Developers",
     location: "Sector 67A, Gurgaon",
     investmentRange: "₹19,999 per sq. ft.",
-    category: "residences",
+    category: "ready-to-move",
     image: "https://ireoprojects.co.in/ireo-the-corridors/images/corridor.jpg",
     images: [
       "https://ireoprojects.co.in/ireo-the-corridors/images/corridor.jpg",
@@ -500,5 +500,24 @@ export const properties: Property[] = [
       { name: "Walkthrough Video", url: "https://www.youtube.com/watch?v=29usCnk51EE" },
       { name: "Location Video", url: "https://www.youtube.com/watch?v=MTMMnRdHsSw" }
     ]
+  },
+  {
+    slug: "ireo-skyon-penthouse-sector-60",
+    name: "Ireo Skyon Penthouse",
+    developer: "Ireo",
+    location: "Sector 60, Gurgaon",
+    investmentRange: "9.7 Cr",
+    category: "ready-to-move",
+    image: "/placeholder.jpg",
+    images: ["/placeholder.jpg"],
+    description: "Ultra-luxury 5 BHK Penthouse in Ireo Skyon offering expansive 4900 sqft of ready-to-move living space.",
+    overview: [
+      { key: "Typology", value: "5 BHK Penthouse" },
+      { key: "Size", value: "4900 sqft" }
+    ],
+    amenities: ["Private Terrace", "Sweeping City Views", "Smart Home Tech"],
+    highlights: ["Ready to Move", "Premium Location"],
+    advantages: ["Excellent Connectivity to Golf Course Ext Road"],
+    priceNumeric: 9.7
   }
 ];
