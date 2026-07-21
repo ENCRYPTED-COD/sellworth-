@@ -1,48 +1,22 @@
-import { NextRequest, NextResponse } from "next/server";
-import { createLead } from "@/services/leadService";
+import { NextResponse } from "next/server";
 
 export async function GET() {
-  return NextResponse.json({
-    success: true,
-    message: "Lead API is working!",
-  });
+  return NextResponse.json(
+    {
+      success: true,
+      message: "Lead API is working!",
+      timestamp: new Date().toISOString(),
+    },
+    { status: 200 }
+  );
 }
 
-export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-
-    console.log("========== NEW LEAD ==========");
-    console.log("Incoming Body:", JSON.stringify(body, null, 2));
-    console.log("==============================");
-
-    const lead = await createLead(body);
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Lead created successfully.",
-        lead,
-      },
-      { status: 201 }
-    );
-  } catch (error: any) {
-    console.error("========== LEAD API ERROR ==========");
-    console.error(error);
-    console.error("====================================");
-
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Lead creation failed.",
-        error: {
-          name: error?.name ?? null,
-          message: error?.message ?? "Unknown error",
-          code: error?.code ?? null,
-          stack: error?.stack ?? null,
-        },
-      },
-      { status: 500 }
-    );
-  }
+export async function POST() {
+  return NextResponse.json(
+    {
+      success: true,
+      message: "POST route is working!",
+    },
+    { status: 200 }
+  );
 }
