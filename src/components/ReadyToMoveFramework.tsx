@@ -10,8 +10,6 @@ export default function ReadyToMoveFramework() {
   const [searchQuery, setSearchQuery] = useState("");
   const [properties, setProperties] = useState<ResaleProperty[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editFormData, setEditFormData] = useState<Partial<ResaleProperty>>({});
 
@@ -65,7 +63,7 @@ export default function ReadyToMoveFramework() {
 
   const getWhatsAppLink = (prop: ResaleProperty) => {
     const text = encodeURIComponent(`Hi, I'm interested in ${prop.name} (${prop.area} - ${prop.price}). Can you provide more details?`);
-    return `https://wa.me/919999999999?text=${text}`; // Replace with actual number
+    return `https://wa.me/919650400647?text=${text}`;
   };
 
   const categories = [
