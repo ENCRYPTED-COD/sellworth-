@@ -1,6 +1,6 @@
 export interface ResaleProperty {
   id: string;
-  category: "plots" | "apartments" | "builder-floors" | "commercial" | "leasing";
+  category: "plots" | "apartments" | "builder-floors" | "commercial" | "leasing" | "penthouses";
   name: string; // e.g. DLF Phase 1
   area: string; // e.g. 300 Sq yards
   price: string; // e.g. 12 Cr
@@ -32,4 +32,7 @@ export const resaleData: ResaleProperty[] = [
   // Leasing
   { id: "l1", category: "leasing", name: "DLF Crest (For Rent)", area: "3,100 Sq ft", price: "3.5 Lacs / month" },
   { id: "l2", category: "leasing", name: "Horizon Center Office (Lease)", area: "5,000 Sq ft", price: "8 Lacs / month" },
+  
+  // Penthouses
+  { id: "ph1", category: "penthouses", name: "Ireo Skyon Penthouse", area: "4900 Sq ft", price: "9.7 Cr", details: "Sector 60 Gurgaon, 5 BHK" }
 ];

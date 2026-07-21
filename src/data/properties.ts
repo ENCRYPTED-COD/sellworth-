@@ -238,7 +238,7 @@ export const properties: Property[] = [
     developer: "Ireo Developers",
     location: "Sector 67A, Gurgaon",
     investmentRange: "₹19,999 per sq. ft.",
-    category: "ready-to-move",
+    category: "residences",
     image: "https://ireoprojects.co.in/ireo-the-corridors/images/corridor.jpg",
     images: [
       "https://ireoprojects.co.in/ireo-the-corridors/images/corridor.jpg",
