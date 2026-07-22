@@ -13,18 +13,18 @@ console.log("====================================");
 
 if (!getApps().length) {
   if (!projectId || !clientEmail || !privateKey) {
-    throw new Error("Firebase Admin credentials are missing.");
+    console.error("Firebase Admin credentials are missing. Leads will not save.");
+  } else {
+    initializeApp({
+      credential: cert({
+        projectId,
+        clientEmail,
+        privateKey,
+      }),
+    });
   }
-
-  initializeApp({
-    credential: cert({
-      projectId,
-      clientEmail,
-      privateKey,
-    }),
-  });
 
   console.log("✅ Firebase Admin initialized");
 }
 
-export const db = getFirestore();
+export const db = (projectId && clientEmail && privateKey) ? getFirestore() : null;

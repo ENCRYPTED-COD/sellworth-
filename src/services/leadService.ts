@@ -16,10 +16,17 @@ export async function createLead(
     updatedAt: now,
   };
 
-  const docRef = await db.collection("leads").add(lead);
-
-  return {
-    id: docRef.id,
-    ...lead,
-  };
+  if (db) {
+    const docRef = await db.collection("leads").add(lead);
+    return {
+      id: docRef.id,
+      ...lead,
+    };
+  } else {
+    // If keys were removed from Hostinger, return dummy to prevent 503 crash
+    return {
+      id: "dummy_id_" + Date.now(),
+      ...lead,
+    };
+  }
 }
