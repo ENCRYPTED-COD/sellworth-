@@ -1,0 +1,22 @@
+import { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://sellworth.in";
+
+  const routes = [
+    "",
+    "/about",
+    "/contact",
+    "/residential",
+    "/commercial",
+    "/developers",
+    "/nri",
+  ];
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: route === "" ? 1 : 0.8,
+  }));
+}
