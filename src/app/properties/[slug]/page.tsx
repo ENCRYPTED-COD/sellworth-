@@ -42,7 +42,7 @@ export default function PropertyDetail() {
 
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hello Sellworth, I would like to schedule a private viewing for ${property.name}.\n\nName: ${formData.name}\nPhone: ${formData.phone}\nSchedule Meet: ${formData.date}\nProperty Link: ${window.location.href}`;
+    const message = `Hello Sellworth, I would like to schedule a private viewing for ${property.projectName}.\n\nName: ${formData.name}\nPhone: ${formData.phone}\nSchedule Meet: ${formData.date}\nProperty Link: ${window.location.href}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/919650400647?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
@@ -57,7 +57,7 @@ export default function PropertyDetail() {
       <section className="relative h-[65vh] w-full bg-luxury-black overflow-hidden flex items-end pb-16">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-70 pointer-events-none"
-          style={{ backgroundImage: `url('${property.image}')` }}
+          style={{ backgroundImage: `url('${property.heroImage}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/30 to-luxury-black/60 pointer-events-none" />
 
@@ -81,7 +81,7 @@ export default function PropertyDetail() {
 
             {/* Title */}
             <h1 className="font-serif text-4xl md:text-6xl text-luxury-ivory tracking-wide leading-tight font-normal">
-              {property.name}
+              {property.projectName}
             </h1>
           </div>
         </div>
@@ -100,38 +100,8 @@ export default function PropertyDetail() {
                 Folio Overview
               </h2>
               <p className="font-sans text-sm md:text-base text-luxury-charcoal/80 leading-relaxed font-light tracking-wide">
-                {property.description}
+                {property.seoDescription}
               </p>
-              {property.brochure && (
-                <a 
-                  href={property.brochure} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-block mt-6 border border-luxury-gold px-8 py-3 text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors duration-300 font-mono text-xs uppercase tracking-widest font-bold shadow-sm"
-                >
-                  Download Presenter Brochure
-                </a>
-              )}
-              
-              {/* Additional Resources */}
-              {property.resources && property.resources.length > 0 && (
-                <div className="mt-8 pt-6 border-t border-luxury-gold/20">
-                  <h4 className="font-serif text-lg text-luxury-black mb-4">Project Resources</h4>
-                  <div className="flex flex-wrap gap-4">
-                    {property.resources.map((res, i) => (
-                      <a
-                        key={i}
-                        href={res.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block border border-luxury-gold/50 px-6 py-2 text-luxury-charcoal hover:bg-luxury-gold hover:text-luxury-black transition-colors duration-300 font-sans text-xs tracking-wider"
-                      >
-                        {res.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Technical Specifications Grid */}
@@ -159,7 +129,7 @@ export default function PropertyDetail() {
                 Architecture Highlights
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {property.highlights.map((h, i) => (
+                {property.usp.map((h, i) => (
                   <div key={i} className="flex items-start space-x-4">
                     <div className="mt-1 flex-shrink-0">
                       <Compass className="w-4 h-4 text-luxury-gold" />
@@ -178,32 +148,13 @@ export default function PropertyDetail() {
                 Visual Gallery
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {property.images.slice(1).map((img, index) => (
+                {property.gallery.map((img, index) => (
                   <div key={index} className="aspect-[4/3] w-full overflow-hidden border border-luxury-gold/10">
                     <img
                       src={img}
-                      alt={`${property.name} gallery ${index + 1}`}
+                      alt={`${property.projectName} gallery ${index + 1}`}
                       className="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-750"
                     />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Location Advantages */}
-            <div className="space-y-6">
-              <h3 className="font-serif text-xl text-luxury-black tracking-wide border-b border-luxury-gold/20 pb-4">
-                Location Advantages
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {property.advantages.map((adv, i) => (
-                  <div key={i} className="flex items-start space-x-4">
-                    <div className="mt-1 flex-shrink-0">
-                      <MapPin className="w-4 h-4 text-luxury-gold" />
-                    </div>
-                    <p className="font-sans text-xs md:text-sm text-luxury-charcoal/80 font-light tracking-wide leading-relaxed">
-                      {adv}
-                    </p>
                   </div>
                 ))}
               </div>
@@ -294,6 +245,20 @@ export default function PropertyDetail() {
                   <span>Request Private Viewing</span>
                 </button>
               </form>
+
+              {property.brochure && (
+                <div className="mt-6">
+                  <a
+                    href={property.brochure}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center space-x-3 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black font-sans font-bold text-[10px] tracking-[0.25em] py-4 uppercase transition-colors"
+                  >
+                    <ArrowUpRight className="w-4 h-4" />
+                    <span>Download Brochure</span>
+                  </a>
+                </div>
+              )}
 
               <div className="mt-6 pt-6 border-t border-luxury-ivory/10 text-center">
                 <span className="font-mono text-[8px] tracking-[0.3em] text-luxury-gold/50 uppercase">

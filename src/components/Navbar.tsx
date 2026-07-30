@@ -31,11 +31,12 @@ export default function Navbar() {
       subItems: [
         { name: "Residences", href: "/#residences" },
         { name: "Commercial", href: "/#commercial" },
-        { name: "New Launch", href: "/#new-launch" },
-        { name: "Senior Living", href: "/senior-living" }
+        { name: "New Launch Projects", href: "/#new-launch" },
+        { name: "Senior Living", href: "/senior-living" },
+        { name: "Kid Centric Living", href: "/aaroham" }
       ]
     },
-    { name: "Developers", href: "/#developers" },
+    { name: "Ready to Move Inventory", href: "/#collections", dispatchTab: "ready-to-move" },
     { name: "NRI Services", href: "/nri-services" },
     { name: "Insights", href: "/#numbers" },
     { name: "Contact Us", href: "/#contact" }
@@ -71,6 +72,9 @@ export default function Navbar() {
                       e.preventDefault();
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }
+                    if ((item as any).dispatchTab) {
+                      window.dispatchEvent(new CustomEvent('switch-tab', { detail: (item as any).dispatchTab }));
+                    }
                   }}
                   className="relative font-sans text-xs tracking-[0.2em] text-luxury-ivory/85 hover:text-luxury-gold uppercase transition-colors duration-300 py-1 flex items-center gap-1 group-hover:text-luxury-gold"
                 >
@@ -96,6 +100,7 @@ export default function Navbar() {
                           if (sub.href.includes('#commercial')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'commercial' }));
                           if (sub.href.includes('#residences')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'residences' }));
                           if (sub.href.includes('#new-launch')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'new-launch' }));
+                          if (sub.href.includes('#ready-to-move')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'ready-to-move' }));
                         }}
                         className="block px-6 py-3 font-sans text-[9px] tracking-widest text-luxury-ivory/70 hover:text-luxury-gold hover:bg-luxury-gold/5 uppercase transition-colors"
                       >
@@ -153,6 +158,9 @@ export default function Navbar() {
                         e.preventDefault();
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }
+                      if ((item as any).dispatchTab) {
+                        window.dispatchEvent(new CustomEvent('switch-tab', { detail: (item as any).dispatchTab }));
+                      }
                     }}
                     className="font-serif text-3xl text-luxury-ivory hover:text-luxury-gold tracking-wide transition-colors duration-300"
                   >
@@ -170,6 +178,7 @@ export default function Navbar() {
                             if (sub.href.includes('#commercial')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'commercial' }));
                             if (sub.href.includes('#residences')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'residences' }));
                             if (sub.href.includes('#new-launch')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'new-launch' }));
+                            if (sub.href.includes('#ready-to-move')) window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'ready-to-move' }));
                           }}
                           className="font-serif text-xl text-luxury-ivory/60 hover:text-luxury-gold tracking-wide transition-colors"
                         >

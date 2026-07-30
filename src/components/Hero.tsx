@@ -52,7 +52,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen w-full bg-luxury-black overflow-hidden flex items-center">
+    <section className="relative min-h-screen w-full bg-luxury-black overflow-hidden flex flex-col">
       {/* Cinematic background video sequencer with luxury image fallback */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Cinematic black crossfade overlay */}
@@ -89,20 +89,14 @@ export default function Hero() {
         <line x1="400" y1="1000" x2="1000" y2="400" />
       </svg>
 
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 w-full z-10 pt-20">
+      {/* Content Overlay */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 flex-1 flex flex-col w-full pb-8 md:pb-12 pt-32">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-3xl flex flex-col space-y-8"
+          className="space-y-6 md:space-y-8 my-auto"
         >
-          <motion.div variants={itemVariants} className="flex items-center space-x-4">
-            <span className="h-[1px] w-12 bg-luxury-gold" />
-            <h2 className="font-mono text-xs tracking-[0.4em] text-luxury-gold uppercase">
-              Premier Luxury Real Estate Consultants in Gurugram
-            </h2>
-          </motion.div>
 
           {/* Heading */}
           <motion.h1
@@ -143,15 +137,45 @@ export default function Hero() {
             </button>
           </motion.div>
         </motion.div>
-      </div>
 
-      {/* Decorative vertical coordinates slider */}
-      <div className="absolute bottom-12 left-12 hidden md:flex items-center space-x-6 text-[10px] font-mono tracking-widest text-luxury-gold/40">
-        <span>GGM &bull; DLF GOLF ROAD</span>
-        <span className="h-4 w-[1px] bg-luxury-gold/20" />
-        <span>SEC 65</span>
-        <span className="h-4 w-[1px] bg-luxury-gold/20" />
-        <span>CYBER CITY</span>
+        {/* Micro-market Hotkeys */}
+        <div className="mt-16 flex flex-col space-y-4 max-w-full z-20">
+          <div className="flex items-center space-x-3">
+            <span className="w-6 h-[1px] bg-luxury-gold/40"></span>
+            <span className="font-mono text-[9px] tracking-[0.2em] text-luxury-gold uppercase">Luxury Properties in Gurugram</span>
+          </div>
+          <div className="flex items-center space-x-6 overflow-x-auto scrollbar-none pb-2">
+            {[
+              { id: "golf-course-road", label: "Golf Course Road" },
+              { id: "golf-course-extension-road", label: "Golf Course Extension Road" },
+              { id: "southern-peripheral-road", label: "SPR" },
+              { id: "new-gurgaon", label: "New Gurgaon" },
+              { id: "dwarka-expressway", label: "Dwarka Expressway" }
+            ].map((market, index, array) => (
+              <div key={market.id} className="flex items-center space-x-6 shrink-0">
+                <button 
+                  onClick={() => {
+                    const collectionsSection = document.getElementById("collections");
+                    if (collectionsSection) collectionsSection.scrollIntoView({ behavior: "smooth" });
+                    
+                    window.dispatchEvent(new CustomEvent('switch-tab', { detail: 'new-launch' }));
+                    
+                    setTimeout(() => {
+                      window.dispatchEvent(new CustomEvent('switch-new-launch-market', { detail: market.id }));
+                    }, 50);
+                  }}
+                  className="group relative font-serif text-sm md:text-base tracking-wide text-luxury-ivory/60 hover:text-luxury-ivory transition-colors duration-500 focus:outline-none whitespace-nowrap"
+                >
+                  {market.label}
+                  <span className="absolute left-0 -bottom-1.5 w-0 h-[1px] bg-luxury-gold transition-all duration-700 ease-out group-hover:w-full"></span>
+                </button>
+                {index < array.length - 1 && (
+                  <span className="w-[1px] h-3 bg-luxury-ivory/20" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Scroll indicator */}

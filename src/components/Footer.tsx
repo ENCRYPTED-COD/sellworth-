@@ -63,6 +63,7 @@ export default function Footer() {
               <Link href="/#collections" className="hover:text-luxury-gold transition-colors">Golf Estate Condominiums</Link>
               <Link href="/#collections" className="hover:text-luxury-gold transition-colors">Commercial Landmarks</Link>
               <Link href="/#collections" className="hover:text-luxury-gold transition-colors">New Launch Portfolios</Link>
+              <Link href="/#collections" className="hover:text-luxury-gold transition-colors">Ready to Move In</Link>
             </div>
           </div>
 

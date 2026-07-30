@@ -27,7 +27,7 @@ export default function ResidencesPage() {
     { name: "Trump Towers", developer: "M3M", location: "Sector 65, Gurugram", config: "3, 4 BHK Residences", price: "₹12 Cr Onwards", img: "https://images.unsplash.com/photo-1600607687931-cebf10cbdfcb?auto=format&fit=crop&q=80&w=800" },
   ];
 
-  const categories = ["Ultra Luxury Apartments", "Golf Residences", "Penthouses", "Independent Floors", "New Launch Projects"];
+  const categories = ["Ultra Luxury Apartments", "Golf Residences", "Penthouses", "Independent Floors", "New Launch Projects", "Ready to Move In"];
 
   return (
     <div className="bg-luxury-ivory min-h-screen text-luxury-black">

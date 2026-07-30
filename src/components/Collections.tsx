@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { properties } from "../data/properties";
 import ReadyToMoveFramework from "./ReadyToMoveFramework";
+import NewLaunchFramework from "./NewLaunchFramework";
 import { ArrowUpRight, Search, X } from "lucide-react";
 
 export default function Collections() {
@@ -16,12 +17,25 @@ export default function Collections() {
     { id: "residences", label: "Signature Residences" },
     { id: "golf", label: "Golf Estate Living" },
     { id: "commercial", label: "Commercial Landmarks" },
-    { id: "new-launch", label: "New Launch Collections" },
+    { id: "new-launch", label: "New Launch Projects" },
     { id: "ready-to-move", label: "Ready to Move In" }
   ] as const;
 
   const filteredProperties = properties.filter((p) => {
-    if (p.category !== activeTab) return false;
+    // Determine category based on new schema
+    let pCategory = "residences";
+    if (p.projectType === "commercial") {
+      pCategory = "commercial";
+    } else if (p.status.includes("Ready to Move")) {
+      pCategory = "ready-to-move";
+    } else if (p.newLaunch) {
+      pCategory = "new-launch";
+    }
+
+    if (activeTab === "golf") return false; // Remove inventory from Golf Estate Living
+    
+    if (pCategory !== activeTab) return false;
+    
     if (budgetFilter === "under-10" && p.priceNumeric >= 10) return false;
     if (budgetFilter === "10-30" && (p.priceNumeric < 10 || p.priceNumeric > 30)) return false;
     if (budgetFilter === "above-30" && p.priceNumeric <= 30) return false;
@@ -118,6 +132,10 @@ export default function Collections() {
           <motion.div key="ready-to-move-view" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }} className="mt-8">
             <ReadyToMoveFramework />
           </motion.div>
+        ) : activeTab === "new-launch" ? (
+          <motion.div key="new-launch-view" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}>
+            <NewLaunchFramework />
+          </motion.div>
         ) : (
           <motion.div key="standard-collections" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-12">
             
@@ -158,17 +176,17 @@ export default function Collections() {
                   {filteredProperties.map((prop) => (
                     <div key={prop.slug} className="group border border-luxury-ivory/5 bg-luxury-charcoal/20 hover:border-luxury-gold/30 transition-all duration-500">
                       <div className="relative aspect-[4/3] overflow-hidden">
-                        <img src={prop.image} alt={prop.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <img src={prop.heroImage} alt={prop.projectName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       </div>
                       <div className="p-6">
                         <div className="flex justify-between items-start mb-4">
                           <div>
                             <div className="text-[10px] font-mono tracking-widest text-luxury-gold uppercase">{prop.developer}</div>
-                            <h3 className="font-serif text-xl text-luxury-ivory mt-1">{prop.name}</h3>
+                            <h3 className="font-serif text-xl text-luxury-ivory mt-1">{prop.projectName}</h3>
                           </div>
                           <div className="text-right">
                             <div className="text-[10px] font-mono text-luxury-ivory/40 uppercase">Advisory</div>
-                            <div className="text-luxury-gold font-serif">{prop.investmentRange}</div>
+                            <div className="text-luxury-gold font-serif">{prop.price}</div>
                           </div>
                         </div>
                         <Link href={`/properties/${prop.slug}`} className="mt-4 flex items-center justify-between text-luxury-ivory/50 group-hover:text-luxury-gold transition-colors text-xs font-mono uppercase tracking-widest">
