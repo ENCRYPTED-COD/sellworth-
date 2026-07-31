@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const developerLogos = [
   {
@@ -10,25 +11,25 @@ const developerLogos = [
     src: "/dev-dlf.png"
   },
   {
-    id: "emaar",
+    id: "emaar-india",
     name: "EMAAR",
     tagline: "Shaping Landscapes, Elevating Lives",
     src: "/dev-emaar.png"
   },
   {
-    id: "m3m",
+    id: "m3m-india",
     name: "M3M",
     tagline: "Our Projects, Your Lifestyle",
     src: "/dev-m3m.png"
   },
   {
-    id: "smartworld",
+    id: "smartworld-developers",
     name: "Smartworld",
     tagline: "The Future of Living",
     src: "https://smartworldsales.com/wp-content/uploads/2021/02/cropped-Untitled-1-copy-2.jpg"
   },
   {
-    id: "godrej",
+    id: "godrej-properties",
     name: "Godrej Properties",
     tagline: "A Legacy of Trust and Excellence",
     src: "/dev-godrej.png"
@@ -40,25 +41,25 @@ const developerLogos = [
     src: "https://www.usdunique.com/assets/signature-global-D5Sb5yDK.jpg"
   },
   {
-    id: "whiteland",
+    id: "whiteland-corporation",
     name: "Whiteland Corporation",
     tagline: "Global Standards, Local Excellence",
     src: "https://goldenbricks.in/media/uploads/builders/Whiteland-Corporation.webp"
   },
   {
-    id: "ashiana",
+    id: "ashiana-housing",
     name: "Ashiana Housing",
     tagline: "Building Trust, Delivering Happiness",
     src: "https://www.velocityhousing.in/uploads/builder/large_1667293946ashiana-group.jpg"
   },
   {
-    id: "mahindra",
+    id: "mahindra-lifespaces",
     name: "Mahindra Lifespaces",
     tagline: "Joyful Homecomings",
     src: "https://globalprimenews.com/wp-content/uploads/2022/07/IMG_20220706_143125.jpg"
   },
   {
-    id: "oberoi",
+    id: "oberoi-realty",
     name: "Oberoi Realty",
     tagline: "Enhancing Lives",
     src: "https://tse3.mm.bing.net/th/id/OIP.BLel0bFSQd4NZgWAHiOtHAHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"
@@ -103,9 +104,10 @@ export default function Developers() {
           
           <div className="flex w-max animate-marquee-left hover:[animation-play-state:paused] transition-all duration-300">
             {listLogos.map((dev, idx) => (
-              <div
+              <Link
+                href={`/developers/${dev.id}`}
                 key={`${dev.id}-${idx}`}
-                className="flex flex-col items-center justify-center mx-10 md:mx-14 px-8 py-6 bg-luxury-charcoal/[0.01] border border-luxury-gold/10 hover:border-luxury-gold/30 hover:bg-luxury-charcoal/[0.03] transition-all duration-300 group text-center min-w-[240px] shadow-sm"
+                className="flex flex-col items-center justify-center mx-10 md:mx-14 px-8 py-6 bg-luxury-charcoal/[0.01] border border-luxury-gold/10 hover:border-luxury-gold/30 hover:bg-luxury-charcoal/[0.03] transition-all duration-300 group text-center min-w-[240px] shadow-sm cursor-pointer"
               >
                 {/* Logo Frame: Enlarged to make logos a bit larger */}
                 <div className="h-20 flex items-center justify-center">
@@ -119,7 +121,7 @@ export default function Developers() {
                 <span className="font-sans text-[9px] tracking-wide text-luxury-charcoal/60 group-hover:text-luxury-bronze transition-colors duration-500 font-light mt-4 block max-w-[200px] leading-relaxed">
                   {dev.tagline}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

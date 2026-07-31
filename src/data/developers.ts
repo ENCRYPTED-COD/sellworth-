@@ -1,52 +1,93 @@
-export interface Developer {
-  id: string;
-  name: string;
-  logo: string;
-  tagline: string;
-  description: string;
-}
-
-export const developers: Developer[] = [
+export const developers = [
   {
-    id: "dlf",
-    name: "DLF",
-    logo: "DLF",
-    tagline: "The Pioneers of Modern Gurgaon Skyline",
-    description: "Creating legacy landmark developments that define ultra-luxury residential living in India."
+    "id": "m3m-india",
+    "name": "M3M India",
+    "description": "M3M India is a prominent luxury and mixed-use real estate developer for buyers searching M3M projects in Gurgaon, luxury apartments in Gurugram, and Golf Course Extension Road property. Its core differentiator is an end-to-end development approach, spanning land, licensing, construction, marketing, delivery, and after-sales support. M3M\u2019s Gurgaon profile is strongly associated with premium design, branded-lifestyle positioning, and amenity-led residences, including recent luxury visibility through M3M Altitude and M3M Opus. It is best suited to buyers prioritising upscale addresses, contemporary design, and premium residential experiences. Explore verified M3M inventory, floor plans, and project-specific RERA information before booking.",
+    "history": "M3M India was founded in 2010 by Mr. Basant Bansal, along with Pankaj Bansal and Roop Bansal. The company was established in Gurugram with a vision to create luxury, high-end real estate developments in NCR, focusing on integrated planning and premium lifestyle projects. Gurugram, luxury flats in Gurgaon.",
+    "keywords": "M3M Gurgaon, M3M luxury apartments, M3M new launch Gurgaon, M3M property in"
   },
   {
-    id: "m3m",
-    name: "M3M",
-    logo: "M3M",
-    tagline: "Our Projects, Your Lifestyle",
-    description: "Renowned for pioneering trendsetting developments with unmatched architecture and luxury finishes."
+    "id": "tulip-infratech",
+    "name": "Tulip Infratech",
+    "description": "Tulip Infratech is a Gurugram-based developer with a strong local presence across luxury residences, villas, apartments, and commercial spaces. Established in 2005, the company highlights over 6,000 homes delivered and 150+ acres developed. Its key USP is a Gurgaon-centric portfolio that combines completed communities, such as Tulip Violet and Tulip Ivory, with premium projects including Tulip Monsella on Golf Course Road. Buyers looking for Tulip projects in Gurgaon, luxury flats in Sector 53, and 4 BHK apartments in Gurugram can evaluate its location-led offerings, large-format homes, and high-rise luxury positioning. Always confirm final specifications and possession details from official project documents.",
+    "history": "Tulip Infratech was founded in 2005 by Mr. Parveen Jain, a real estate entrepreneur who aimed to develop quality residential communities in Gurugram with a focus on timely delivery and mid-to-premium housing segments. apartments Golf Course Road, Tulip Infratech.",
+    "keywords": "Tulip Monsella Gurgaon, Tulip projects Gurgaon, Tulip flats in Gurugram, luxury"
   },
   {
-    id: "emaar",
-    name: "EMAAR",
-    logo: "EMAAR",
-    tagline: "Shaping Landscapes, Elevating Lives",
-    description: "International real estate masterminds bringing global standards of quality and design to India."
+    "id": "ireo",
+    "name": "IREO",
+    "description": "IREO Gurgaon should be positioned primarily as a resale and due-diligence content opportunity rather than a standard new-launch builder page. Search demand commonly centres on IREO resale flats in Gurgaon, IREO Corridors, IREO Skyon, IREO Uptown, and IREO Victory Valley. Its established communities can interest buyers seeking occupied or mature-sector homes, but quality, maintenance, documentation, and possession history must be checked project by project. Importantly, public NCLT records show insolvency proceedings involving Ireo Grace Realtech, so your website should never make unverified delivery or legal-clearance claims. This transparent, research-led approach can build trust and attract serious resale buyers.",
+    "history": "IREO was founded in 2004 by Mr. Lalit Goyal, with backing from international investors. The company was set up as one of India\u2019s early large-scale private equity-backed real estate platforms focused on integrated township development in India. review, resale flats in Sector 60 Gurgaon.",
+    "keywords": "IREO resale Gurgaon, IREO Corridors resale, IREO Skyon apartment, IREO property"
   },
   {
-    id: "smartworld",
-    name: "Smartworld",
-    logo: "Smartworld",
-    tagline: "The Future of Living",
-    description: "Innovators of contemporary urban residences combining efficiency, luxury, and technology."
+    "id": "bptp",
+    "name": "BPTP",
+    "description": "BPTP has a sizeable NCR presence across residential, commercial, and township development, with established Gurugram communities including Amstoria and Astaire Gardens. The company states that it has delivered over 24,500 units and developed more than 50 million square feet. Its Gurgaon appeal lies in its wide property mix, from plotted communities and premium residences to newer projects around Dwarka Expressway and Golf Course Extension Road. Buyers searching BPTP projects in Gurgaon, BPTP Amstoria Sector 102, Dwarka Expressway apartments, and BPTP Downtown 66 should compare project-level approvals, configuration, possession timing, and exact amenities. Its strongest USP is experience in large-scale, community-oriented NCR developments.",
+    "history": "BPTP (Business Park Town Planners Pvt. Ltd.) was founded in 2003 by Mr. Kabul Chawla, who established the company with a focus on large-scale township and plotted development across Delhi-NCR. Expressway.",
+    "keywords": "BPTP Gurgaon, BPTP Amstoria, BPTP Sector 102, BPTP Downtown 66, flats on Dwarka"
   },
   {
-    id: "godrej",
-    name: "Godrej Properties",
-    logo: "Godrej",
-    tagline: "A Legacy of Trust and Excellence",
-    description: "Combining a 125-year legacy of trust with cutting-edge design and sustainability."
+    "id": "godrej-properties",
+    "name": "Godrej Properties",
+    "description": "Godrej Properties brings the heritage of the Godrej Group to the Gurgaon real-estate market, with a focus on design, sustainability, governance, and premium community development. The company has a long-standing national presence across 15+ cities and a portfolio that includes multiple Gurugram developments. Buyers frequently search Godrej Properties Gurgaon, Godrej Astra Golf Course Road, Godrej Meridien Sector 106, and Godrej flats in Gurgaon. The brand is best suited to buyers who value an established developer identity, modern planning, and sustainability-led positioning. A strong channel-partner page should provide verified pricing, floor plans, location maps, and RERA details rather than general promotional promises.",
+    "history": "Godrej Properties was established in 1990 as part of the Godrej Group, one of India\u2019s oldest and most trusted business conglomerates founded by the Godrej family. The real estate arm was developed under the leadership of the group to formalize its entry into real estate development. Course Road, Godrej projects Gurugram.",
+    "keywords": "Godrej Gurgaon, Godrej Astra Gurgaon, Godrej Meridien, luxury apartments Golf"
   },
   {
-    id: "signature-global",
-    name: "Signature Global",
-    logo: "Signature Global",
-    tagline: "Making Luxury Accessible",
-    description: "Pioneering premium high-quality residential communities with green building standards."
+    "id": "mahindra-lifespaces",
+    "name": "Mahindra Lifespaces",
+    "description": "Mahindra Lifespaces is known for a sustainability-led approach to residential communities and integrated development. In Gurugram, its official portfolio includes Mahindra Luminare and Mahindra Aura in Sector 110A, along with Mahindra Central Park in Sector 43; these are shown as sold out, making resale-focused content especially relevant. Its USP is thoughtful planning shaped by the wider Mahindra \u201cRise\u201d philosophy, green living principles, and a nationwide development portfolio. Target buyers searching Mahindra Luminare resale, Mahindra Aura Gurgaon, Mahindra flats in Gurgaon, and sustainable homes in Gurugram. Position the page as a verified resale and project-information resource, supported by current availability and actual home-condition checks.",
+    "history": "Mahindra Lifespaces was founded in 1994 as the real estate and infrastructure development arm of the Mahindra Group, led by the Mahindra family, with a focus on sustainable urban development and industrial clusters. sustainable flats Gurgaon, Sector 110A property.",
+    "keywords": "Mahindra Luminare Gurgaon, Mahindra Aura resale, Mahindra Lifespaces Gurgaon,"
+  },
+  {
+    "id": "signature-global",
+    "name": "Signature Global",
+    "description": "Signature Global is a Gurugram-headquartered developer that has evolved from affordable housing into mid-income, premium residential, township, and commercial development. The company reports 41,000+ happy families, 52+ projects, and 17.9 million square feet delivered, while retaining a strong Delhi-NCR focus. Its market advantage is range: buyers can explore premium homes, family-oriented communities, and large-scale growth-corridor projects. Relevant searches include Signature Global Gurgaon, Signature Global Sector 71, Signature Global Dwarka Expressway, 3 BHK flats in Gurgaon, and new launch projects Gurugram. It is best positioned for buyers comparing value, scale, newer sectors, and branded NCR development.",
+    "history": "Signature Global was founded in 2014 by Mr. Pradeep Kumar Aggarwal, a real estate professional with prior experience in affordable housing development, aiming to provide budget-friendly homes under government housing schemes in NCR. projects in Gurugram, premium flats Gurgaon.",
+    "keywords": "Signature Global Gurgaon, Signature Global Sector 71, Signature Global DXP, new"
+  },
+  {
+    "id": "smartworld-developers",
+    "name": "Smartworld Developers",
+    "description": "Smartworld Developers is a newer Gurugram-based real-estate brand focused on contemporary, technology-aware homes and mixed-use projects. Founded in 2021, its portfolio spans low-rise homes, high-rise residences, retail, and premium branded developments in areas such as Sector 61, Sector 66, Sector 69, and Dwarka Expressway. Its USP is space-efficient planning paired with lifestyle amenities, private terraces or decks in selected projects, and a customer-first brand approach. Buyers searching Smartworld Gurgaon, Smartworld One DXP, Smartworld The Edition, Smartworld Sky Arc, and luxury apartments in Sector 66 are key audiences. Project-specific verification remains essential for prices, delivery dates, and specifications.",
+    "history": "Smartworld Developers was founded in 2021 by a group of seasoned real estate professionals and investors, including Mr. Vivek Singhal, with a vision to introduce global-standard residential concepts in Gurugram. Expressway, Sector 66 luxury apartments.",
+    "keywords": "Smartworld Gurgaon, Smartworld One DXP, Smartworld The Edition, flats on Dwarka"
+  },
+  {
+    "id": "dlf",
+    "name": "DLF",
+    "description": "DLF is one of the most established names in Gurugram real estate, with a legacy closely tied to the development of DLF City, DLF Cyber City, luxury residences, office spaces, retail, and townships. With more than 78 years of experience and 32.63 million square metres delivered, its primary strength is large-scale, integrated urban development. Searches such as DLF Gurgaon, DLF luxury apartments Gurgaon, DLF Privana, DLF City property, and DLF Cyber City homes attract high-intent buyers and investors. DLF is particularly relevant for customers seeking mature infrastructure, premium communities, organised maintenance, and established business-district connectivity.",
+    "history": "DLF (Delhi Land & Finance) was founded in 1946 by Chaudhary Raghvendra Singh, who played a key role in developing early planned colonies in Delhi and later expanded into Gurugram, shaping it into a major real estate hub. projects Gurugram.",
+    "keywords": "DLF Gurgaon, DLF Privana Gurgaon, DLF City property, luxury flats in Gurgaon, DLF"
+  },
+  {
+    "id": "emaar-india",
+    "name": "Emaar India",
+    "description": "Emaar India has a well-known Gurugram presence across residential, commercial, plotted, retail, and business developments. Its portfolio includes projects and communities such as Emaar Gurgaon Greens, Emerald Hills, Palm Hills, DigiHomes, Amaris, The 88, and Emaar Business District. The brand\u2019s stated focus on design excellence, build quality, and timely delivery makes it relevant for buyers researching established and upcoming Gurgaon addresses. Use intent-led phrases such as Emaar projects Gurgaon, Emaar Amaris Sector 62, Emaar flats in Gurugram, Emaar The 88 Dwarka Expressway, and Emaar commercial property Gurgaon. Link the content to verified project documents and current availability.",
+    "history": "Emaar India is a subsidiary of Emaar Properties PJSC, founded in 1997 in Dubai by Mohamed Alabbar, and later expanded into India to develop large-scale residential and commercial projects. Gurugram.",
+    "keywords": "Emaar Gurgaon, Emaar Amaris, Emaar The 88, Emaar Sector 62, Emaar projects in"
+  },
+  {
+    "id": "whiteland-corporation",
+    "name": "Whiteland Corporation",
+    "description": "Whiteland Corporation is a Gurugram-headquartered developer focused on luxury residential and commercial real estate. Its portfolio includes The Aspen, The Aspen Iconic, Blissville, Urban Cubes 71, and Arena 76, covering luxury residences, low-rise floors, retail, and commercial formats. The brand\u2019s key USP is its emphasis on globally influenced design, sustainability, hospitality-oriented experiences, and premium project positioning. It can attract users searching Whiteland Gurgaon, Whiteland The Aspen, Whiteland Blissville, luxury flats in Sector 76, and commercial property in Gurgaon. Content should highlight confirmed project facts, relevant RERA records, exact configuration, and location advantages rather than unsupported investment-return claims.",
+    "history": "Whiteland Corporation was founded in 2020 by Mr. Pankaj Pal, a real estate entrepreneur with experience in infrastructure and development, aiming to create premium luxury housing in Gurugram. Gurugram, Sector 76 property.",
+    "keywords": "Whiteland Gurgaon, Whiteland The Aspen, Whiteland Blissville, luxury projects"
+  },
+  {
+    "id": "ashiana-housing",
+    "name": "Ashiana Housing",
+    "description": "Ashiana Housing has more than four decades of experience and a differentiated residential positioning around community living, in-house maintenance, senior living, kid-centric homes, and premium residences. The company reports 19,000+ homes delivered and maintains a presence in Gurgaon and Sohna-Gurgaon, including Ashiana Mulberry in Sector 2, Sohna. Its USP is not simply apartment construction; it is long-term community management and lifecycle support for residents. Target buyers searching Ashiana Gurgaon, Ashiana Sohna, Ashiana Mulberry, kid-centric homes Gurgaon, and senior living near Gurgaon. This profile will perform best when linked to actual inventory, family-lifestyle content, and project-specific amenities.",
+    "history": "Ashiana Housing was founded in 1979 by Mr. Om Gupta, with a vision to build quality housing focused on community living and long-term resident satisfaction. NCR, Ashiana Housing projects.",
+    "keywords": "Ashiana Gurgaon, Ashiana Mulberry Sohna, kid-centric homes Gurgaon, senior living"
+  },
+  {
+    "id": "oberoi-realty",
+    "name": "Oberoi Realty",
+    "description": "Oberoi Realty\u2014the correct spelling, rather than \u201cOberoi Reality\u201d\u2014should currently be positioned as an emerging Gurugram luxury-developer opportunity. A May 2026 HRERA public notice records an application by Oberoi Realty for a Sector 58, Gurugram project, following approvals and a developer change process. This makes Oberoi Realty Sector 58 Gurgaon, Oberoi luxury apartments Gurugram, and Golf Course Extension Road new launch relevant search themes. However, do not market the project as launched, RERA registered, or possession-ready until the final registration certificate and official project details are published. Its SEO USP is early, factual information for premium buyers seeking verified updates.",
+    "history": "Oberoi Realty was founded in 1980 by Mr. Vikas Oberoi, who built the company into one of Mumbai\u2019s leading luxury real estate developers before expanding interest into other major Indian markets. Course Extension Road property, upcoming luxury projects Gurgaon.",
+    "keywords": "Oberoi Realty Gurgaon, Oberoi Sector 58, Oberoi luxury apartments Gurugram, Golf"
   }
 ];
