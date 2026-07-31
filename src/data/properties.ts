@@ -1103,5 +1103,51 @@ export const properties: Property[] = [
   featured: true,
   newLaunch: false,
   brochure: "/lamborghini_assets/brochure.pdf"
+},
+{
+  id: "antela-heights-farmhouses",
+  slug: "antela-heights-farmhouses",
+  projectName: "Antela Heights",
+  developer: "Antela",
+  microMarket: "aravali-foothills",
+  sector: "Agra-Jaipur Highway",
+  location: "Agra-Jaipur Highway, foothills of the Aravalis",
+  configuration: "Farmhouses & CLU Approved Land",
+  price: "Price on Request",
+  size: "Customisable",
+  status: "Immediate Possession",
+  projectType: "Exclusive Farmhouse Community",
+  heroImage: "/antela_heights/antela_0_0.png",
+  gallery: [
+    "/antela_heights/antela_0_0.png",
+    "/antela_heights/antela_10_0.png",
+    "/antela_heights/antela_11_0.png",
+    "/antela_heights/antela_12_0.png",
+    "/antela_heights/antela_13_0.png"
+  ],
+  amenities: [
+    "CLU Approved Land",
+    "Spacious & Elegant Farmhouses",
+    "Sustainable Development",
+    "Peaceful Nature Getaway",
+    "Immediate Possession"
+  ],
+  usp: [
+    "Premium CLU Approved land for full legal clarity",
+    "Located in the serene foothills of the Aravalis",
+    "Designed for immediate development and long-term value",
+    "Peaceful getaway from urban life surrounded by nature"
+  ],
+  overview: [
+    { key: "Status", value: "Ready for Possession" },
+    { key: "Type", value: "Farmhouses & Land" },
+    { key: "Location", value: "Agra-Jaipur Highway" },
+    { key: "Legal", value: "CLU Approved" }
+  ],
+  seoTitle: "Antela Heights | Premium CLU Approved Farmhouses",
+  seoDescription: "Antela Heights offers premium CLU Approved land and exclusive farmhouses in the serene foothills of the Aravalis, providing a peaceful getaway from urban life.",
+  featured: false,
+  newLaunch: false,
+  brochure: "/AntelaHeightsBrochure.pdf"
 }
 ];

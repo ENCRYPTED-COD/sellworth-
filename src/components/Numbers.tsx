@@ -1,26 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView, animate } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
+function Counter({ target, prefix = "", suffix = "" }: { target: number; prefix?: string; suffix?: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(0, target, {
+        duration: 2,
+        ease: "easeOut",
+        onUpdate: (val) => setCurrent(Math.floor(val))
+      });
+      return controls.stop;
+    }
+  }, [isInView, target]);
+
+  return (
+    <span ref={ref}>
+      {prefix}{current.toLocaleString()}{suffix}
+    </span>
+  );
+}
 
 export default function Numbers() {
   const stats = [
     {
-      value: "₹15,000 Cr+",
+      target: 15000,
+      prefix: "₹",
+      suffix: " Cr+",
       label: "Transaction Value Assisted",
       description: "Direct advisory in ultra-high-net-worth real estate layouts."
     },
     {
-      value: "2,500+",
+      target: 2500,
+      prefix: "",
+      suffix: "+",
       label: "Distinguished Clients",
       description: "Serving business leaders, family offices, and NRI investors."
     },
     {
-      value: "25+",
+      target: 25,
+      prefix: "",
+      suffix: "+",
       label: "Developer Partners",
       description: "Direct strategic alliances with tier-1 developers in India."
     },
     {
-      value: "50+",
+      target: 50,
+      prefix: "",
+      suffix: "+",
       label: "Premium Developments",
       description: "Exclusive portfolios in residential and commercial sectors."
     }
@@ -46,7 +78,7 @@ export default function Numbers() {
             >
               {/* Value */}
               <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-luxury-gold font-light tracking-wide leading-none">
-                {stat.value}
+                <Counter target={stat.target} prefix={stat.prefix} suffix={stat.suffix} />
               </h3>
               
               {/* Label */}

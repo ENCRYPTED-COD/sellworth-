@@ -12,6 +12,8 @@ import Locations from "@/components/Locations";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import EmiCalculator from "@/components/EmiCalculator";
+import LifestyleSegments from "@/components/LifestyleSegments";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -28,11 +30,13 @@ export default function Home() {
           <Hero />
           <BrandStory />
           <Collections />
+          <LifestyleSegments />
           <WhySellworth />
           <Developers />
           <Numbers />
           <Locations />
           <EmiCalculator />
+          <FAQ />
           <ContactForm />
         </main>
         <Footer />

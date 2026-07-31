@@ -18,7 +18,24 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Sellworth | Luxury Real Estate & Premium Properties in Gurugram",
   description: "Discover exclusive luxury apartments, bespoke villas, and premium commercial spaces in Gurugram's top locations like DLF Phase 5, Golf Course Road, and Cyber City.",
-  keywords: ["Luxury Real Estate Gurugram", "Premium Properties Gurgaon", "DLF Camellias", "DLF Magnolias", "Golf Course Road Apartments", "Buy Villa Gurugram", "Commercial Leasing Cyber City"],
+  keywords: [
+    "Luxury Real Estate Gurugram", "Premium Properties Gurgaon", "DLF Camellias", "DLF Magnolias", "Golf Course Road Apartments", "Buy Villa Gurugram", "Commercial Leasing Cyber City",
+    "best areas to buy property in Gurgaon",
+    "ready to move flats in Gurgaon",
+    "RERA approved projects in Gurgaon",
+    "property on Dwarka Expressway",
+    "commercial property in Gurgaon",
+    "3 BHK flats in Gurgaon",
+    "luxury apartments in Gurgaon",
+    "builder floors in Gurgaon",
+    "plots for sale in Gurgaon",
+    "property dealer in Gurgaon",
+    "property price in Gurgaon",
+    "home loan for property in Gurgaon",
+    "best localities in Gurgaon for families",
+    "resale flats in Gurgaon",
+    "property near Cyber City Gurgaon"
+  ],
   openGraph: {
     title: "Sellworth | Luxury Real Estate Gurugram",
     description: "Gurgaon's premier real estate advisory for distinguished residential and commercial developments.",
