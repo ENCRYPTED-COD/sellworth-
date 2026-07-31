@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 export default function LifestyleSegments() {
@@ -9,7 +8,12 @@ export default function LifestyleSegments() {
     <section className="relative w-full h-[60vh] min-h-[400px] max-h-[600px] flex flex-col md:flex-row overflow-hidden border-y border-luxury-ivory/10">
       
       {/* Senior Living Half */}
-      <Link href="/senior-living" className="relative flex-1 group block overflow-hidden">
+      <a 
+        href="https://wa.me/919650400647?text=I'm%20interested%20in%20Senior%20Living%20Portfolios" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="relative flex-1 group block overflow-hidden"
+      >
         {/* Background Video */}
         <video 
           autoPlay 
@@ -47,13 +51,18 @@ export default function LifestyleSegments() {
             </div>
           </motion.div>
         </div>
-      </Link>
+      </a>
 
       {/* Middle Divider (Desktop) */}
       <div className="hidden md:block w-[1px] bg-luxury-ivory/20 z-10" />
 
       {/* Kid Centric Half */}
-      <Link href="/aaroham" className="relative flex-1 group block overflow-hidden">
+      <a 
+        href="https://wa.me/919650400647?text=I'm%20interested%20in%20Kid-Centric%20Residences" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="relative flex-1 group block overflow-hidden"
+      >
         {/* Background Video */}
         <video 
           autoPlay 
@@ -91,7 +100,7 @@ export default function LifestyleSegments() {
             </div>
           </motion.div>
         </div>
-      </Link>
+      </a>
 
     </section>
   );
