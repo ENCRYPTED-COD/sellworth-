@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { properties } from "../data/properties";
+import { properties as staticProperties } from "../data/properties";
 import PropertyCard from "./PropertyCard";
 import { ArrowRight, Search } from "lucide-react";
 
@@ -15,6 +15,48 @@ export default function NewLaunchFramework() {
     { id: "new-gurgaon", label: "New Gurgaon", cta: "Explore New Gurgaon" },
     { id: "dwarka-expressway", label: "Dwarka Expressway", cta: "Explore Dwarka Collection" }
   ] as const;
+
+  const [dbCollections, setDbCollections] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("/api/collections")
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          const mapped = data.map(c => {
+            let mm = "";
+            const loc = (c.location || "").toLowerCase();
+            if (loc.includes("dwarka expressway") || loc.includes("dwarka")) mm = "dwarka-expressway";
+            else if (loc.includes("golf course extension") || loc.includes("spr")) mm = "golf-course-extension-road";
+            else if (loc.includes("golf course road")) mm = "golf-course-road";
+            else if (loc.includes("cyber") || loc.includes("dlf")) mm = "cyber-city";
+            else if (loc.includes("sector 86") || loc.includes("sector 8")) mm = "new-gurgaon";
+            else mm = "new-gurgaon";
+
+            return {
+              slug: c.slug || c.id,
+              projectName: c.name,
+              developer: c.developer,
+              location: c.location,
+              microMarket: mm,
+              price: c.investmentRange || (c.priceNumeric ? `${c.priceNumeric} Cr` : "Price on Request"),
+              heroImage: c.image || (c.images && c.images[0]) || "",
+              projectType: c.category === "commercial" ? "commercial" : "residential",
+              status: "",
+              newLaunch: true,
+              priceNumeric: c.priceNumeric || 0,
+              category: c.category
+            };
+          });
+          setDbCollections(mapped);
+        }
+      })
+      .catch(err => console.error("Failed to fetch collections", err));
+  }, []);
+
+  const combined = [...staticProperties, ...dbCollections];
+  // Deduplicate by slug (DB items override static items with the same slug)
+  const properties = Array.from(new Map(combined.map(p => [p.slug || p.id, p])).values());
 
   useEffect(() => {
     const handleSwitchMarket = (e: any) => {

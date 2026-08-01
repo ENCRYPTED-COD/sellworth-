@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { properties } from "../data/properties";
+import { properties as staticProperties } from "../data/properties";
 import ReadyToMoveFramework from "./ReadyToMoveFramework";
 import NewLaunchFramework from "./NewLaunchFramework";
 import { ArrowUpRight, Search, X } from "lucide-react";
@@ -14,6 +14,37 @@ export default function Collections() {
   const [budgetFilter, setBudgetFilter] = useState<"all" | "under-10" | "10-30" | "above-30">("all");
   const [locationFilter, setLocationFilter] = useState<"all" | "golf-course-road" | "cyber-city" | "dwarka-expressway" | "spr-road" | "new-gurgaon">("all");
 
+  const [dbCollections, setDbCollections] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("/api/collections")
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          // Map MongoDB collections format to the expected PropertyCard format
+          const mapped = data.map(c => ({
+            slug: c.slug || c.id,
+            projectName: c.name,
+            developer: c.developer,
+            location: c.location,
+            price: c.investmentRange || (c.priceNumeric ? `${c.priceNumeric} Cr` : "Price on Request"),
+            heroImage: c.image || (c.images && c.images[0]) || "",
+            projectType: c.category === "commercial" ? "commercial" : "residential",
+            status: "",
+            newLaunch: c.category === "new-launch",
+            priceNumeric: c.priceNumeric || 0,
+            category: c.category // Store exact category for easy filtering
+          }));
+          setDbCollections(mapped);
+        }
+      })
+      .catch(err => console.error("Failed to fetch collections", err));
+  }, []);
+
+  const combined = [...staticProperties, ...dbCollections];
+  // Deduplicate by slug (DB items override static items with the same slug)
+  const allProperties = Array.from(new Map(combined.map(p => [p.slug || p.id, p])).values());
+
   const tabs = [
     { id: "residences", label: "Signature Residences" },
     { id: "golf", label: "Golf Estate Living" },
@@ -22,15 +53,19 @@ export default function Collections() {
     { id: "ready-to-move", label: "Ready to Move In" }
   ] as const;
 
-  const filteredProperties = properties.filter((p) => {
+  const filteredProperties = allProperties.filter((p) => {
     // Determine category based on new schema
-    let pCategory = "residences";
-    if (p.projectType === "commercial") {
-      pCategory = "commercial";
-    } else if (p.status.includes("Ready to Move")) {
-      pCategory = "ready-to-move";
-    } else if (p.newLaunch) {
-      pCategory = "new-launch";
+    let pCategory = p.category; // From DB mapping
+    if (!pCategory) {
+      // Fallback for static properties
+      pCategory = "residences";
+      if (p.projectType === "commercial") {
+        pCategory = "commercial";
+      } else if (p.status?.includes("Ready to Move")) {
+        pCategory = "ready-to-move";
+      } else if (p.newLaunch) {
+        pCategory = "new-launch";
+      }
     }
 
     if (activeTab === "golf") return false; // Remove inventory from Golf Estate Living

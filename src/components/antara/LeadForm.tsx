@@ -49,7 +49,7 @@ export default function LeadForm() {
   const handleTimelineChange = (timeline: string) => {
     setFormData((prev) => ({ ...prev, timeline }));
   };
-const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
   setIsSubmitting(true);
 
@@ -58,33 +58,21 @@ const handleSubmit = async (e: React.FormEvent) => {
       name: formData.name,
       phone: `${formData.countryCode} ${formData.phone}`,
       email: formData.email,
-      source: "Estate 361 Landing Page",
+      source: "Senior Living Page",
     };
-
-    const response = await fetch("/api/leads", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(leadData),
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      console.error(result);
-      throw new Error(result.message || "Failed to submit");
-    }
 
     // Analytics
     trackLeadSubmit(leadData);
 
-    // Redirect
-    router.push("/thank-you");
+    const message = `Hi Sellworth, I would like to download the brochure and details for Senior Living.\n\nName: ${formData.name}\nPhone: ${formData.countryCode} ${formData.phone}\nEmail: ${formData.email}\nCity/Country: ${formData.cityCountry}\nIntent: For ${formData.intent}\nTimeline: ${formData.timeline}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/919999266369?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, "_blank");
+    
+    setIsSubmitting(false);
   } catch (error) {
     console.error("Lead Submission Error:", error);
-    alert("Unable to submit the form. Please try again.");
-  } finally {
     setIsSubmitting(false);
   }
 };
@@ -96,7 +84,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           Unlock Exclusive Details
         </h3>
         <p className="text-gray-600 text-sm">
-          Download the comprehensive Estate 361 Brochure, Pricing, and Floor Plans.
+          Download the comprehensive Senior Living Brochure, Pricing, and Floor Plans.
         </p>
       </div>
 

@@ -41,7 +41,7 @@ export default function NRILeadForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -52,10 +52,13 @@ export default function NRILeadForm() {
 
     trackLeadSubmit(fullData);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      router.push("/thank-you");
-    }, 800);
+    const message = `Hi Sellworth, I would like to schedule a virtual consultation for Senior Living.\n\nName: ${formData.name}\nPhone: ${fullData.fullPhone}\nEmail: ${formData.email}\nParents' City: ${formData.parentCity}\nTimezone: ${formData.timezone}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/919999266369?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, "_blank");
+    
+    setIsSubmitting(false);
   };
 
   return (
