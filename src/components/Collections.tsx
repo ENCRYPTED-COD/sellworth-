@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-// Removed static import
-// import { properties } from "../data/properties";
+import { properties } from "../data/properties";
 import ReadyToMoveFramework from "./ReadyToMoveFramework";
 import NewLaunchFramework from "./NewLaunchFramework";
 import { ArrowUpRight, Search, X } from "lucide-react";
@@ -15,9 +14,6 @@ export default function Collections() {
   const [budgetFilter, setBudgetFilter] = useState<"all" | "under-10" | "10-30" | "above-30">("all");
   const [locationFilter, setLocationFilter] = useState<"all" | "golf-course-road" | "cyber-city" | "dwarka-expressway" | "spr-road" | "new-gurgaon">("all");
 
-  const [properties, setProperties] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
   const tabs = [
     { id: "residences", label: "Signature Residences" },
     { id: "golf", label: "Golf Estate Living" },
@@ -25,21 +21,6 @@ export default function Collections() {
     { id: "new-launch", label: "New Launch Projects" },
     { id: "ready-to-move", label: "Ready to Move In" }
   ] as const;
-
-  useEffect(() => {
-    fetch("/api/properties")
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setProperties(data);
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch properties", err);
-        setLoading(false);
-      });
-  }, []);
 
   const filteredProperties = properties.filter((p) => {
     // Determine category based on new schema

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-// import { properties } from "../data/properties";
+import { properties } from "../data/properties";
 import PropertyCard from "./PropertyCard";
 import { ArrowRight, Search } from "lucide-react";
 
@@ -15,24 +15,6 @@ export default function NewLaunchFramework() {
     { id: "new-gurgaon", label: "New Gurgaon", cta: "Explore New Gurgaon" },
     { id: "dwarka-expressway", label: "Dwarka Expressway", cta: "Explore Dwarka Collection" }
   ] as const;
-
-  const [properties, setProperties] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/api/properties")
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setProperties(data);
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch properties", err);
-        setLoading(false);
-      });
-  }, []);
 
   useEffect(() => {
     const handleSwitchMarket = (e: any) => {
