@@ -1,17 +1,23 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import clientPromise from "@/lib/mongodb";
 
-// Path to our experimental local JSON database for collections
-const dataFilePath = path.join(process.cwd(), "src", "data", "collections.json");
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    const collections = JSON.parse(fileContents);
-    return NextResponse.json(collections);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
+    const collections = await db.collection("collections").find({}).toArray();
+    
+    // Remove MongoDB _id and ensure id field exists
+    const cleanedCollections = collections.map(p => {
+      const { _id, ...rest } = p;
+      return rest;
+    });
+
+    return NextResponse.json(cleanedCollections);
   } catch (error) {
-    console.error("Error reading collections.json:", error);
+    console.error("Error reading collections from MongoDB:", error);
     return NextResponse.json({ error: "Failed to load collections" }, { status: 500 });
   }
 }
@@ -29,19 +35,16 @@ export async function POST(request: Request) {
     newCollection.id = newCollection.id || `col_${Date.now()}`;
     newCollection.slug = newCollection.slug || newCollection.id;
 
-    // Read existing
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    const collections = JSON.parse(fileContents);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
+    
+    await db.collection("collections").insertOne(newCollection);
+    
+    const { _id, ...savedCollection } = newCollection;
 
-    // Append new
-    collections.push(newCollection);
-
-    // Write back
-    fs.writeFileSync(dataFilePath, JSON.stringify(collections, null, 2), "utf8");
-
-    return NextResponse.json({ success: true, collection: newCollection }, { status: 201 });
+    return NextResponse.json({ success: true, collection: savedCollection }, { status: 201 });
   } catch (error) {
-    console.error("Error writing to collections.json:", error);
+    console.error("Error writing collection to MongoDB:", error);
     return NextResponse.json({ error: "Failed to save collection" }, { status: 500 });
   }
 }
@@ -51,17 +54,20 @@ export async function PUT(request: Request) {
     const updatedCollection = await request.json();
     if (!updatedCollection.id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    let collections = JSON.parse(fileContents);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
     
-    collections = collections.map((p: any) => 
-      p.id === updatedCollection.id ? { ...p, ...updatedCollection } : p
+    // We update by 'id' field, not '_id'
+    const { _id, ...updateData } = updatedCollection;
+    
+    await db.collection("collections").updateOne(
+      { id: updateData.id },
+      { $set: updateData }
     );
     
-    fs.writeFileSync(dataFilePath, JSON.stringify(collections, null, 2), "utf8");
-    return NextResponse.json({ success: true, collection: updatedCollection });
+    return NextResponse.json({ success: true, collection: updateData });
   } catch (error) {
-    console.error("Error updating collections.json:", error);
+    console.error("Error updating collection in MongoDB:", error);
     return NextResponse.json({ error: "Failed to update collection" }, { status: 500 });
   }
 }
@@ -72,15 +78,14 @@ export async function DELETE(request: Request) {
     const id = searchParams.get("id");
     if (!id) return NextResponse.json({ error: "Missing id parameter" }, { status: 400 });
 
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    let collections = JSON.parse(fileContents);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
     
-    collections = collections.filter((p: any) => p.id !== id);
+    await db.collection("collections").deleteOne({ id: id });
     
-    fs.writeFileSync(dataFilePath, JSON.stringify(collections, null, 2), "utf8");
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error deleting from collections.json:", error);
+    console.error("Error deleting collection from MongoDB:", error);
     return NextResponse.json({ error: "Failed to delete collection" }, { status: 500 });
   }
 }

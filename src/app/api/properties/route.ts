@@ -1,17 +1,23 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import clientPromise from "@/lib/mongodb";
 
-// Path to our experimental local JSON database
-const dataFilePath = path.join(process.cwd(), "src", "data", "experimental.json");
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    const properties = JSON.parse(fileContents);
-    return NextResponse.json(properties);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
+    const properties = await db.collection("properties").find({}).toArray();
+    
+    // Remove MongoDB _id and ensure id field exists
+    const cleanedProperties = properties.map(p => {
+      const { _id, ...rest } = p;
+      return rest;
+    });
+
+    return NextResponse.json(cleanedProperties);
   } catch (error) {
-    console.error("Error reading experimental.json:", error);
+    console.error("Error reading from MongoDB:", error);
     return NextResponse.json({ error: "Failed to load properties" }, { status: 500 });
   }
 }
@@ -25,22 +31,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Generate a unique ID
-    newProperty.id = `ext_${Date.now()}`;
+    // Generate a unique ID if not present
+    newProperty.id = newProperty.id || `ext_${Date.now()}`;
 
-    // Read existing
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    const properties = JSON.parse(fileContents);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
+    
+    await db.collection("properties").insertOne(newProperty);
+    
+    const { _id, ...savedProperty } = newProperty;
 
-    // Append new
-    properties.push(newProperty);
-
-    // Write back
-    fs.writeFileSync(dataFilePath, JSON.stringify(properties, null, 2), "utf8");
-
-    return NextResponse.json({ success: true, property: newProperty }, { status: 201 });
+    return NextResponse.json({ success: true, property: savedProperty }, { status: 201 });
   } catch (error) {
-    console.error("Error writing to experimental.json:", error);
+    console.error("Error writing to MongoDB:", error);
     return NextResponse.json({ error: "Failed to save property" }, { status: 500 });
   }
 }
@@ -50,17 +53,20 @@ export async function PUT(request: Request) {
     const updatedProperty = await request.json();
     if (!updatedProperty.id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    let properties = JSON.parse(fileContents);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
     
-    properties = properties.map((p: any) => 
-      p.id === updatedProperty.id ? { ...p, ...updatedProperty } : p
+    // We update by 'id' field, not '_id'
+    const { _id, ...updateData } = updatedProperty;
+    
+    await db.collection("properties").updateOne(
+      { id: updateData.id },
+      { $set: updateData }
     );
     
-    fs.writeFileSync(dataFilePath, JSON.stringify(properties, null, 2), "utf8");
-    return NextResponse.json({ success: true, property: updatedProperty });
+    return NextResponse.json({ success: true, property: updateData });
   } catch (error) {
-    console.error("Error updating experimental.json:", error);
+    console.error("Error updating MongoDB:", error);
     return NextResponse.json({ error: "Failed to update property" }, { status: 500 });
   }
 }
@@ -71,15 +77,14 @@ export async function DELETE(request: Request) {
     const id = searchParams.get("id");
     if (!id) return NextResponse.json({ error: "Missing id parameter" }, { status: 400 });
 
-    const fileContents = fs.readFileSync(dataFilePath, "utf8");
-    let properties = JSON.parse(fileContents);
+    const client = await clientPromise;
+    const db = client.db("sellworth");
     
-    properties = properties.filter((p: any) => p.id !== id);
+    await db.collection("properties").deleteOne({ id: id });
     
-    fs.writeFileSync(dataFilePath, JSON.stringify(properties, null, 2), "utf8");
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error deleting from experimental.json:", error);
+    console.error("Error deleting from MongoDB:", error);
     return NextResponse.json({ error: "Failed to delete property" }, { status: 500 });
   }
 }

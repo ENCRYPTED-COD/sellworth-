@@ -341,5 +341,12 @@
     "name": "Ireo Skyon (Sector 60)",
     "area": "4900 Sq ft",
     "price": "9.7 Cr"
+  },
+  {
+    "name": "Test",
+    "category": "plots",
+    "area": "100",
+    "price": "10",
+    "id": "ext_1785561980001"
   }
 ]
