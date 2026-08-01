@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, MessageSquare } from "lucide-react";
-import { resaleData } from "../data/resale";
+// import { resaleData } from "../data/resale";
 
 export default function ReadyToMoveFramework() {
   const WHATSAPP_NUMBER = "919650400647";
@@ -19,6 +19,26 @@ export default function ReadyToMoveFramework() {
     { id: "commercial", label: "Commercial" },
     { id: "leasing", label: "Leasing" },
   ] as const;
+
+  const [resaleData, setResaleData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/properties")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          // You could optionally filter here for only ready-to-move, 
+          // or rely on category mapping. The admin uses these categories exactly.
+          setResaleData(data);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch properties", err);
+        setLoading(false);
+      });
+  }, []);
 
   const filteredProperties = resaleData.filter((property) => {
     const matchesCategory = property.category === activeCategory;
