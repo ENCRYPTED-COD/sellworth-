@@ -16,6 +16,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sellworth.in"),
   title: "Sellworth | Luxury Real Estate & Premium Properties in Gurugram",
   description: "Discover exclusive luxury apartments, bespoke villas, and premium commercial spaces in Gurugram's top locations like DLF Phase 5, Golf Course Road, and Cyber City.",
   keywords: [
